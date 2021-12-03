@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="10dp"
+            app:srcCompat="@drawable/ic_bus"
+            app:tint="#3f46d1" />
+
+        <TextView
+            android:id="@+id/textBusNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/imageView"
+            android:text="TextView"
+            android:textColor="#4270fc"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:orientation="horizontal"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_below="@id/textBusNumber">
+
+            <TextView
+                android:id="@+id/textStation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textPredictTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginStart="5dp"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textSettingTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/imageButton"
+            android:layout_marginEnd="5dp"
+            android:text="TextView"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/imageButton2"
+            android:backgroundTint="@color/transparent"
+            app:srcCompat="@drawable/ic_bell"
+            app:tint="@color/light_gray" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/transparent"
+            app:srcCompat="@drawable/ic_settings"
+            app:tint="@color/light_gray"/>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
