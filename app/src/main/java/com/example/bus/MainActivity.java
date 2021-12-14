@@ -1,12 +1,14 @@
 package com.example.bus;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.example.bus.adapter.Adapter;
 
@@ -18,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         ArrayList<String> list = new ArrayList<>();
         for(int i=0; i<30; i++) {
@@ -37,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.appbar_action, menu) ;
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.appbar_action, menu);
 
-        return true ;
+        return true;
     }
 }
