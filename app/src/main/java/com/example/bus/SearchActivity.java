@@ -1,20 +1,16 @@
 package com.example.bus;
 
 import android.os.Bundle;
+import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.example.bus.databinding.ActivitySearchBinding;
+import com.example.bus.ui.main.SectionsPagerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
-
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-
-import com.example.bus.ui.main.SectionsPagerAdapter;
-import com.example.bus.databinding.ActivitySearchBinding;
 
 public class SearchActivity extends AppCompatActivity {
 
