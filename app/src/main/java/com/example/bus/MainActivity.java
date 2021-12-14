@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.example.bus.adapter.Adapter;
 
@@ -46,5 +48,18 @@ public class MainActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.appbar_action, menu);
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+
+        switch (item.getItemId()) {
+            case R.id.search:
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
