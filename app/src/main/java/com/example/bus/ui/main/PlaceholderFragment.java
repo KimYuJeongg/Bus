@@ -11,17 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.bus.R;
-import com.example.bus.databinding.ActivitySearchBinding;
 import com.example.bus.databinding.FragmentSearchBinding;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class PlaceholderFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";

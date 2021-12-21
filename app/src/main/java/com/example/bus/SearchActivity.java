@@ -3,7 +3,6 @@ package com.example.bus;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.bus.databinding.ActivitySearchBinding;
