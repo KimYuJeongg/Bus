@@ -13,13 +13,15 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.bus.databinding.FragmentSearchBinding;
+import com.example.bus.databinding.FragmentSearchBusStopItemBinding;
 
 public class PlaceholderFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
-    private FragmentSearchBinding binding;
+//    private FragmentSearchBinding binding;
+    private FragmentSearchBusStopItemBinding binding;
 
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -41,14 +43,16 @@ public class PlaceholderFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentSearchBinding.inflate(inflater, container, false);
+//        binding = FragmentSearchBinding.inflate(inflater, container, false);
+        binding = FragmentSearchBusStopItemBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.sectionLabel;
+//        final TextView textView = binding.sectionLabel;
+        final TextView textView = binding.busStopName;
+
+
         pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
