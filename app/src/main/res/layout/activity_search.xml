@@ -11,15 +11,20 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.Bus.AppBarOverlay">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="?actionBarSize"
-            android:padding="@dimen/appbar_padding"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:background="@drawable/edit_text_style"
+            android:layout_marginVertical="10dp"
+            android:paddingHorizontal="5dp"
+            android:textColor="#686868"
+            android:ems="10"
+            android:textColorHint="#A6A6A6"
+            android:hint="@string/edit_text_hint"
+            android:inputType="textPersonName"
+            android:autofillHints="no" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
@@ -29,6 +34,7 @@
             app:tabIndicatorColor="@color/colorPrimary"
             app:tabSelectedTextColor="@color/colorPrimary"
             app:tabTextColor="#7E7E7E" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager2.widget.ViewPager2

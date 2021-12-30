@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Bus/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.38229166666666664" />
+        <entry key="..\:/Bus/app/src/main/res/drawable/edit_text_style.xml" value="0.3398148148148148" />
         <entry key="..\:/Bus/app/src/main/res/drawable/ic_bell.xml" value="0.3398148148148148" />
         <entry key="..\:/Bus/app/src/main/res/drawable/ic_bus.xml" value="0.3398148148148148" />
         <entry key="..\:/Bus/app/src/main/res/drawable/ic_launcher_background.xml" value="0.38229166666666664" />
@@ -11,7 +12,7 @@
         <entry key="..\:/Bus/app/src/main/res/drawable/ic_settings.xml" value="0.3398148148148148" />
         <entry key="..\:/Bus/app/src/main/res/drawable/ic_settings_.xml" value="0.3398148148148148" />
         <entry key="..\:/Bus/app/src/main/res/layout/activity_main.xml" value="0.3515625" />
-        <entry key="..\:/Bus/app/src/main/res/layout/activity_search.xml" value="0.1" />
+        <entry key="..\:/Bus/app/src/main/res/layout/activity_search.xml" value="0.25" />
         <entry key="..\:/Bus/app/src/main/res/layout/bus_item.xml" value="0.33" />
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_bus_list.xml" value="0.24861111111111112" />
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_item.xml" value="0.32546296296296295" />
