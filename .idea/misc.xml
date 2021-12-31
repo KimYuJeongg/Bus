@@ -18,7 +18,8 @@
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_item.xml" value="0.32546296296296295" />
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_item_list.xml" value="0.3125" />
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_search.xml" value="0.25" />
-        <entry key="..\:/Bus/app/src/main/res/layout/fragment_search_bus_stop_item.xml" value="0.3125" />
+        <entry key="..\:/Bus/app/src/main/res/layout/fragment_search_bus_item.xml" value="0.5" />
+        <entry key="..\:/Bus/app/src/main/res/layout/fragment_search_bus_stop_item.xml" value="0.5" />
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_station_list.xml" value="0.32546296296296295" />
         <entry key="..\:/Bus/app/src/main/res/menu/appbar_action.xml" value="0.36614583333333334" />
       </map>

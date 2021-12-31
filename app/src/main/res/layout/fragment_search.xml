@@ -2,12 +2,12 @@
 <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/busStopRecyclerView"
+    android:id="@+id/searchRecyclerView"
     android:name="com.example.bus.ui.main.PlaceholderFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.PlaceholderFragment"
     app:layoutManager="LinearLayoutManager"
-    tools:listitem="@layout/fragment_search_bus_stop_item" >
+    tools:listitem="@layout/fragment_search_bus_stop_item">
 
 </androidx.recyclerview.widget.RecyclerView>
