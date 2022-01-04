@@ -12,7 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.bus.adapter.Adapter;
+import com.example.bus.adapter.MainRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this)) ;
 
         // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
-        Adapter adapter = new Adapter(list) ;
+        MainRecyclerViewAdapter adapter = new MainRecyclerViewAdapter(list) ;
         recyclerView.setAdapter(adapter) ;
 
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), 1));
