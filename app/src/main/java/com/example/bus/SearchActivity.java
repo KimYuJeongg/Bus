@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.bus.adapter.SearchRecyclerViewAdapter;
 import com.example.bus.databinding.ActivitySearchBinding;
+import com.example.bus.databinding.FragmentSearchBinding;
 import com.example.bus.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -34,20 +35,11 @@ public class SearchActivity extends AppCompatActivity {
 
         new TabLayoutMediator(tabs, pager, (tab, position) -> tab.setText(TAB_TITLES[position])).attach();
 
-        ArrayList<String> list = new ArrayList<>();
-        for(int i=0; i<30; i++) {
-            list.add(i + "") ;
-        }
-//        RecyclerView recyclerView = findViewById(R.id.searchRecyclerView);
-//        SearchRecyclerViewAdapter adapter = new SearchRecyclerViewAdapter(list);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setAdapter(adapter);
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
                     System.out.println("position: 정류장");
-
                 } else if (tab.getPosition() == 1) {
                     System.out.println("position: 버스");
                 }

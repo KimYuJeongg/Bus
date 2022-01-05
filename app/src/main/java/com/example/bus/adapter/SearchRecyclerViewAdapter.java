@@ -13,7 +13,11 @@ import com.example.bus.R;
 
 import java.util.ArrayList;
 
-public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecyclerViewAdapter.ViewHolder>{
+public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecyclerViewAdapter.ViewHolder> {
+
+    public static final int VIEWTYPE_BUS_STOP = 0;
+    public static final int VIEWTYPE_BUS = 1;
+    int mItemViewType;
 
     ArrayList<String> list;
 
@@ -48,18 +52,33 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         this.list = list;
     }
 
+    public void setItemViewType(int viewType) {
+        mItemViewType = viewType;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = null;
 
-        View busStopView = inflater.inflate(R.layout.fragment_search_bus_stop_item, parent, false);
-        View busView = inflater.inflate(R.layout.fragment_search_bus_item, parent, false);
+        if (viewType == VIEWTYPE_BUS_STOP) {
+            view = inflater.inflate(R.layout.fragment_search_bus_stop_item, parent, false);
+//            View busStopView = inflater.inflate(R.layout.fragment_search_bus_stop_item, parent, false);
+        } else if (viewType == VIEWTYPE_BUS) {
+            view = inflater.inflate(R.layout.fragment_search_bus_item, parent, false);
+//            View busView = inflater.inflate(R.layout.fragment_search_bus_item, parent, false);
+        }
 
-        SearchRecyclerViewAdapter.ViewHolder vh = new SearchRecyclerViewAdapter.ViewHolder(busStopView);
+        SearchRecyclerViewAdapter.ViewHolder vh = new SearchRecyclerViewAdapter.ViewHolder(view);
 
         return vh;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return mItemViewType;
     }
 
     @Override
