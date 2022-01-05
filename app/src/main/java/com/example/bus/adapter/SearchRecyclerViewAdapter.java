@@ -19,7 +19,8 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView busStopName, busStopId, busStopLocation, busName, busArea, busRoute;
+        TextView busStopName, busStopId, busStopLocation;
+//        busName, busArea, busRoute;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -27,12 +28,23 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
             busStopName = itemView.findViewById(R.id.busStopName);
             busStopId = itemView.findViewById(R.id.busStopId);
             busStopLocation = itemView.findViewById(R.id.busStopLocation);
-            busName = itemView.findViewById(R.id.busName);
-            busArea = itemView.findViewById(R.id.busRoute);
+//            busName = itemView.findViewById(R.id.busName);
+//            busArea = itemView.findViewById(R.id.busRoute);
         }
+
+//        public BusStopViewHolder(@NonNull View itemView) {
+//            super(itemView);
+//        }
     }
 
-    SearchRecyclerViewAdapter(ArrayList<String> list) {
+//    public class BusViewHolder extends RecyclerView.ViewHolder {
+//
+//        public BusViewHolder(@NonNull View itemView) {
+//            super(itemView);
+//        }
+//    }
+
+    public SearchRecyclerViewAdapter(ArrayList<String> list) {
         this.list = list;
     }
 
@@ -52,6 +64,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.busStopId.setText(list.get(position));
     }
 
     @Override
