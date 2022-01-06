@@ -4,24 +4,26 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bus.adapter.SearchRecyclerViewAdapter;
 import com.example.bus.databinding.FragmentSearchBinding;
-import com.example.bus.databinding.FragmentSearchBusStopItemBinding;
+
+import java.util.ArrayList;
 
 public class PlaceholderFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
-//    private FragmentSearchBinding binding;
-    private FragmentSearchBusStopItemBinding binding;
+    private FragmentSearchBinding binding;
 
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -45,18 +47,30 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-//        binding = FragmentSearchBinding.inflate(inflater, container, false);
-        binding = FragmentSearchBusStopItemBinding.inflate(inflater, container, false);
+        binding = FragmentSearchBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-//        final TextView textView = binding.sectionLabel;
-        final TextView textView = binding.busStopName;
+        ArrayList list = new ArrayList();
+        for(int i=0; i<10; i++) {
+            list.add(i);
+        }
 
+        RecyclerView recyclerView = binding.searchRecyclerView;
+        SearchRecyclerViewAdapter adapter;
+        adapter = new SearchRecyclerViewAdapter(list);
+        recyclerView.setAdapter(adapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), 1));
 
         pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                if(s.equals("서대전역 입구")) {
+                    adapter.setItemViewType(SearchRecyclerViewAdapter.VIEWTYPE_BUS_STOP);
+                    System.out.println("정류장");
+                } else {
+                    adapter.setItemViewType(SearchRecyclerViewAdapter.VIEWTYPE_BUS);
+                    System.out.println("버스");
+                }
             }
         });
         return root;

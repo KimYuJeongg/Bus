@@ -23,30 +23,11 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView busStopName, busStopId, busStopLocation;
-//        busName, busArea, busRoute;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            busStopName = itemView.findViewById(R.id.busStopName);
-            busStopId = itemView.findViewById(R.id.busStopId);
-            busStopLocation = itemView.findViewById(R.id.busStopLocation);
-//            busName = itemView.findViewById(R.id.busName);
-//            busArea = itemView.findViewById(R.id.busRoute);
         }
 
-//        public BusStopViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//        }
     }
-
-//    public class BusViewHolder extends RecyclerView.ViewHolder {
-//
-//        public BusViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//        }
-//    }
 
     public SearchRecyclerViewAdapter(ArrayList<String> list) {
         this.list = list;
@@ -65,10 +46,8 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
         if (viewType == VIEWTYPE_BUS_STOP) {
             view = inflater.inflate(R.layout.fragment_search_bus_stop_item, parent, false);
-//            View busStopView = inflater.inflate(R.layout.fragment_search_bus_stop_item, parent, false);
         } else if (viewType == VIEWTYPE_BUS) {
             view = inflater.inflate(R.layout.fragment_search_bus_item, parent, false);
-//            View busView = inflater.inflate(R.layout.fragment_search_bus_item, parent, false);
         }
 
         SearchRecyclerViewAdapter.ViewHolder vh = new SearchRecyclerViewAdapter.ViewHolder(view);
@@ -83,7 +62,6 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.busStopId.setText(list.get(position));
     }
 
     @Override
