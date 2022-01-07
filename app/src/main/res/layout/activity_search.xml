@@ -13,7 +13,7 @@
 
 <!--        TODO: Rxbinding-->
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/searchBox"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
