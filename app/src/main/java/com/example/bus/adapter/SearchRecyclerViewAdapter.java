@@ -23,8 +23,13 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        TextView busStopName,busName;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            busStopName = itemView.findViewById(R.id.busStopName);
+            busName = itemView.findViewById(R.id.busName);
         }
 
     }
@@ -62,6 +67,11 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        if (mItemViewType == VIEWTYPE_BUS_STOP) {
+            holder.busStopName.setText(list.get(position));
+        } else if (mItemViewType == VIEWTYPE_BUS) {
+            holder.busName.setText(list.get(position));
+        }
     }
 
     @Override

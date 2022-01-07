@@ -25,6 +25,8 @@ public class PlaceholderFragment extends Fragment {
     private PageViewModel pageViewModel;
     private FragmentSearchBinding binding;
 
+    ArrayList<String> list = new ArrayList<>();
+
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
         Bundle bundle = new Bundle();
@@ -41,6 +43,7 @@ public class PlaceholderFragment extends Fragment {
         if (getArguments() != null) {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
+        setList(index);
         pageViewModel.setIndex(index);
     }
 
@@ -50,26 +53,18 @@ public class PlaceholderFragment extends Fragment {
         binding = FragmentSearchBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        ArrayList list = new ArrayList();
-        for(int i=0; i<10; i++) {
-            list.add(i);
-        }
-
         RecyclerView recyclerView = binding.searchRecyclerView;
-        SearchRecyclerViewAdapter adapter;
-        adapter = new SearchRecyclerViewAdapter(list);
+        SearchRecyclerViewAdapter adapter = new SearchRecyclerViewAdapter(list);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), 1));
 
-        pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        pageViewModel.getIndex().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                if(s.equals("서대전역 입구")) {
+            public void onChanged(Integer index) {
+                if (index == 1) {
                     adapter.setItemViewType(SearchRecyclerViewAdapter.VIEWTYPE_BUS_STOP);
-                    System.out.println("정류장");
-                } else {
+                } else if (index == 2) {
                     adapter.setItemViewType(SearchRecyclerViewAdapter.VIEWTYPE_BUS);
-                    System.out.println("버스");
                 }
             }
         });
@@ -80,5 +75,35 @@ public class PlaceholderFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    void setList(int index) {
+        if(index == 1) {
+            list.add("대전테크노파크");
+            list.add("으능정이");
+            list.add("대전준법지원센터");
+            list.add("중부경찰서");
+            list.add("대전역");
+            list.add("서대전초등학교");
+            list.add("호수돈여고");
+            list.add("대전대학교입구");
+            list.add("용운동주민센터");
+            list.add("용운도서관");
+            list.add("판암주공5단지");
+            list.add("판암역");
+        } else if(index == 2) {
+            list.clear();
+            list.add("603");
+            list.add("107");
+            list.add("318");
+            list.add("604");
+            list.add("108");
+            list.add("912");
+            list.add("511");
+            list.add("684");
+            list.add("422");
+            list.add("357");
+            list.add("급행 1번");
+        }
     }
 }
