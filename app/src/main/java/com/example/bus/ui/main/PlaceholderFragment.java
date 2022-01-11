@@ -26,6 +26,8 @@ public class PlaceholderFragment extends Fragment {
     private FragmentSearchBinding binding;
 
     ArrayList<String> list = new ArrayList<>();
+    ArrayList<String> searchResultList = new ArrayList<>();
+    SearchRecyclerViewAdapter adapter = new SearchRecyclerViewAdapter(list);
 
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -54,7 +56,6 @@ public class PlaceholderFragment extends Fragment {
         View root = binding.getRoot();
 
         RecyclerView recyclerView = binding.searchRecyclerView;
-        SearchRecyclerViewAdapter adapter = new SearchRecyclerViewAdapter(list);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), 1));
 
@@ -79,6 +80,7 @@ public class PlaceholderFragment extends Fragment {
 
     void setList(int index) {
         if(index == 1) {
+            list.add("ab");
             list.add("대전테크노파크");
             list.add("으능정이");
             list.add("대전준법지원센터");
@@ -91,7 +93,7 @@ public class PlaceholderFragment extends Fragment {
             list.add("용운도서관");
             list.add("판암주공5단지");
             list.add("판암역");
-        } else if(index == 2) {
+        } else {
             list.clear();
             list.add("603");
             list.add("107");
@@ -105,5 +107,16 @@ public class PlaceholderFragment extends Fragment {
             list.add("357");
             list.add("급행 1번");
         }
+    }
+
+    public void setSearchResultList(String search) {
+        searchResultList.clear();
+        for(int i = 0; i < list.size(); i++) {
+            if(list.get(i).contains(search)) {
+                searchResultList.add(list.get(i));
+            }
+        }
+
+        adapter.notifyItemRangeInserted(0, searchResultList.size());
     }
 }
