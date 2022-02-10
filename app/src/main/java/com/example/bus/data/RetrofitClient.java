@@ -1,22 +1,20 @@
 package com.example.bus.data;
 
-import com.tickaroo.tikxml.TikXml;
-import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory;
-
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
     private static RetrofitClient instance = null;
-    private static BusArrivalAPI busArrival;
-    private static String baseUrl = "http://openapi.tago.go.kr/openapi/service/";
+    private static BusStopInterface busStopInterface;
+    private static String baseUrl = "http://apis.data.go.kr/1613000";
 
     private RetrofitClient() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addConverterFactory(TikXmlConverterFactory.create(new TikXml.Builder().exceptionOnUnreadXml(false).build()))
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        busArrival = retrofit.create(BusArrivalAPI.class);
+        busStopInterface = retrofit.create(BusStopInterface.class);
     }
 
     public static RetrofitClient getInstance() {
@@ -26,7 +24,8 @@ public class RetrofitClient {
         return instance;
     }
 
-    public static BusArrivalAPI getBusArrivalAPI() {
-        return busArrival;
+    public static BusStopInterface getRetrofitInterface() {
+        return busStopInterface;
     }
+
 }
