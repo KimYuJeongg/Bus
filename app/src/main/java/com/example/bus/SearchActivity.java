@@ -1,30 +1,35 @@
 package com.example.bus;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.bus.adapter.SearchRecyclerViewAdapter;
+import com.example.bus.data.BusStopInterface;
+import com.example.bus.data.BusStopItem;
+import com.example.bus.data.RetrofitClient;
 import com.example.bus.databinding.ActivitySearchBinding;
-import com.example.bus.databinding.FragmentSearchBinding;
 import com.example.bus.ui.main.PlaceholderFragment;
 import com.example.bus.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.ArrayList;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SearchActivity extends AppCompatActivity {
 
     private ActivitySearchBinding binding;
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private String key = "9BWhbO2OOt0gFxjT43TFFgz5hK2EAxt%2BPEO0DTHE1i7lO7pOlN3GhQJgM2F5Yd4cH4fwkoC4UYmwOFoLOzVxng%3D%3D";
+    private BusStopInterface busStopInterface;
+    private RetrofitClient retrofitClient;
+
     ViewPager2 pager;
     TabLayout tabs;
     EditText searchBox;
@@ -46,6 +51,21 @@ public class SearchActivity extends AppCompatActivity {
 
         tabs.addOnTabSelectedListener(tabSelectedListener);
         searchBox.addTextChangedListener(textWatcher);
+
+        retrofitClient = RetrofitClient.getInstance();
+        busStopInterface = RetrofitClient.getRetrofitInterface();
+
+        busStopInterface.getBusStop(key, 1, 10, "json", 25, "전통시장", 44810).enqueue(new Callback<BusStopItem>() {
+            @Override
+            public void onResponse(Call<BusStopItem> call, Response<BusStopItem> response) {
+                BusStopItem result = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<BusStopItem> call, Throwable t) {
+                Log.d("retrofit", t.getMessage());
+            }
+        });
     }
 
     TabLayout.OnTabSelectedListener tabSelectedListener = new TabLayout.OnTabSelectedListener() {
@@ -82,7 +102,7 @@ public class SearchActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-            fragment.setSearchResultList(s.toString());
+//            fragment.setSearchResultList(s.toString());
         }
     };
 }

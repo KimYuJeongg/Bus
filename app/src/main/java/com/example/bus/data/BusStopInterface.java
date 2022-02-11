@@ -7,7 +7,7 @@ import retrofit2.http.Query;
 public interface BusStopInterface {
 
     @GET("http://apis.data.go.kr/1613000/BusSttnInfoInqireService")
-    Call<BusStopResult> getBusStop(
+    Call<BusStopItem> getBusStop(
             @Query("serviceKey") String serviceKey,
             @Query("pageNo") int pageNo,
             @Query("numOfRows") int numOfRows,

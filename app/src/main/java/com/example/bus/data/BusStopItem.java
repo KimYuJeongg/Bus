@@ -3,7 +3,7 @@ package com.example.bus.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BusStopResult {
+public class BusStopItem {
 
     @SerializedName("gpslati")
     @Expose

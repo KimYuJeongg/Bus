@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -109,14 +108,4 @@ public class PlaceholderFragment extends Fragment {
         }
     }
 
-    public void setSearchResultList(String search) {
-        searchResultList.clear();
-        for(int i = 0; i < list.size(); i++) {
-            if(list.get(i).contains(search)) {
-                searchResultList.add(list.get(i));
-            }
-        }
-
-        adapter.notifyItemRangeInserted(0, searchResultList.size());
-    }
 }
