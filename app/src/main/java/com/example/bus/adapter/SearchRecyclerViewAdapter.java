@@ -10,8 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bus.R;
+import com.example.bus.data.BusStopItem;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecyclerViewAdapter.ViewHolder> {
 
@@ -19,23 +20,32 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
     public static final int VIEWTYPE_BUS = 1;
     int mItemViewType;
 
-    ArrayList<String> list;
+    List<BusStopItem> busStopItems;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView busStopName,busName;
+        TextView busStopName, busStopId, busStopLocation, busName, busArea, busRoute;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             busStopName = itemView.findViewById(R.id.busStopName);
+            busStopId = itemView.findViewById(R.id.busStopId);
+            busStopLocation = itemView.findViewById(R.id.busStopLocation);
             busName = itemView.findViewById(R.id.busName);
+            busArea = itemView.findViewById(R.id.busArea);
+            busRoute = itemView.findViewById(R.id.busRoute);
+        }
+
+        public void setBusStopItem(BusStopItem item) {
+            busStopName.setText(item.getNodenm());
+            busStopId.setText(item.getNodeno());
         }
 
     }
 
-    public SearchRecyclerViewAdapter(ArrayList<String> list) {
-        this.list = list;
+    public SearchRecyclerViewAdapter(List<BusStopItem> busStopItems) {
+        this.busStopItems = busStopItems;
     }
 
     public void setItemViewType(int viewType) {
@@ -68,15 +78,15 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (mItemViewType == VIEWTYPE_BUS_STOP) {
-            holder.busStopName.setText(list.get(position));
+            BusStopItem item = busStopItems.get(position);
+            holder.setBusStopItem(item);
         } else if (mItemViewType == VIEWTYPE_BUS) {
-            holder.busName.setText(list.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return busStopItems.size();
     }
 
 }

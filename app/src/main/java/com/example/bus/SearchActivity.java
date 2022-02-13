@@ -9,8 +9,10 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.bus.data.Body;
 import com.example.bus.data.BusStopInterface;
-import com.example.bus.data.BusStopItem;
+import com.example.bus.data.Items;
+import com.example.bus.data.Result;
 import com.example.bus.data.RetrofitClient;
 import com.example.bus.databinding.ActivitySearchBinding;
 import com.example.bus.ui.main.PlaceholderFragment;
@@ -55,15 +57,25 @@ public class SearchActivity extends AppCompatActivity {
         retrofitClient = RetrofitClient.getInstance();
         busStopInterface = RetrofitClient.getRetrofitInterface();
 
-        busStopInterface.getBusStop(key, 1, 10, "json", 25, "전통시장", 44810).enqueue(new Callback<BusStopItem>() {
+        busStopInterface.getBusStop(key, 1, 10, "json", 25, "전통시장", 44810).enqueue(new Callback<Result>() {
             @Override
-            public void onResponse(Call<BusStopItem> call, Response<BusStopItem> response) {
-                BusStopItem result = response.body();
+            public void onResponse(Call<Result> call, Response<Result> response) {
+                if(response.isSuccessful())
+                {
+                    Result result = response.body();
+                    Body body = result.getBody();
+                    Items items = body.getItems();
+                    Log.d("retrofit", "Data fetch success");
+                    fragment.busStopItems = items.getItem();
+                } else {
+                    Log.d("retrofit", "Data fetch fail");
+                }
             }
 
             @Override
-            public void onFailure(Call<BusStopItem> call, Throwable t) {
+            public void onFailure(Call<Result> call, Throwable t) {
                 Log.d("retrofit", t.getMessage());
+                Log.d("retrofit", "onFailure");
             }
         });
     }

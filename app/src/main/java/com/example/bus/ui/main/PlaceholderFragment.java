@@ -13,9 +13,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bus.adapter.SearchRecyclerViewAdapter;
+import com.example.bus.data.BusStopItem;
 import com.example.bus.databinding.FragmentSearchBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlaceholderFragment extends Fragment {
 
@@ -25,8 +27,8 @@ public class PlaceholderFragment extends Fragment {
     private FragmentSearchBinding binding;
 
     ArrayList<String> list = new ArrayList<>();
-    ArrayList<String> searchResultList = new ArrayList<>();
-    SearchRecyclerViewAdapter adapter = new SearchRecyclerViewAdapter(list);
+    public List<BusStopItem> busStopItems = new ArrayList<>();
+    SearchRecyclerViewAdapter adapter = new SearchRecyclerViewAdapter(busStopItems);
 
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
