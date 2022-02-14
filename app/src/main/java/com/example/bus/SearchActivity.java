@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.bus.data.Body;
 import com.example.bus.data.BusStopInterface;
+import com.example.bus.data.Example;
 import com.example.bus.data.Items;
 import com.example.bus.data.Result;
 import com.example.bus.data.RetrofitClient;
@@ -20,6 +21,8 @@ import com.example.bus.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,7 +31,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private ActivitySearchBinding binding;
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
-    private String key = "9BWhbO2OOt0gFxjT43TFFgz5hK2EAxt%2BPEO0DTHE1i7lO7pOlN3GhQJgM2F5Yd4cH4fwkoC4UYmwOFoLOzVxng%3D%3D";
+    private String key = "9BWhbO2OOt0gFxjT43TFFgz5hK2EAxt+PEO0DTHE1i7lO7pOlN3GhQJgM2F5Yd4cH4fwkoC4UYmwOFoLOzVxng==";
     private BusStopInterface busStopInterface;
     private RetrofitClient retrofitClient;
 
@@ -57,12 +60,13 @@ public class SearchActivity extends AppCompatActivity {
         retrofitClient = RetrofitClient.getInstance();
         busStopInterface = RetrofitClient.getRetrofitInterface();
 
-        busStopInterface.getBusStop(key, 1, 10, "json", 25, "전통시장", 44810).enqueue(new Callback<Result>() {
+        busStopInterface.getBusStop(key, 1, 10, "json", 25, "전통시장").enqueue(new Callback<Example>() {
             @Override
-            public void onResponse(Call<Result> call, Response<Result> response) {
+            public void onResponse(Call<Example> call, Response<Example> response) {
                 if(response.isSuccessful())
                 {
-                    Result result = response.body();
+                    Example example = response.body();
+                    Result result = example.getResult();
                     Body body = result.getBody();
                     Items items = body.getItems();
                     Log.d("retrofit", "Data fetch success");
@@ -73,9 +77,8 @@ public class SearchActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Result> call, Throwable t) {
+            public void onFailure(Call<Example> call, Throwable t) {
                 Log.d("retrofit", t.getMessage());
-                Log.d("retrofit", "onFailure");
             }
         });
     }
