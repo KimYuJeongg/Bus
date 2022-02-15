@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.bus.data.Body;
 import com.example.bus.data.BusStopInterface;
+import com.example.bus.data.BusStopItem;
 import com.example.bus.data.Example;
 import com.example.bus.data.Items;
 import com.example.bus.data.Result;
@@ -58,7 +59,7 @@ public class SearchActivity extends AppCompatActivity {
         retrofitClient = RetrofitClient.getInstance();
         busStopInterface = RetrofitClient.getRetrofitInterface();
 
-        busStopInterface.getBusStop(key, 10, "json", 25, "전통시장").enqueue(new Callback<Example>() {
+        busStopInterface.getBusStop(key, 25, "json", 25, "서대전").enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
                 if (response.isSuccessful()) {
@@ -66,9 +67,13 @@ public class SearchActivity extends AppCompatActivity {
                     Result result = example.getResult();
                     Body body = result.getBody();
                     Items items = body.getItems();
-                    Log.d("retrofit", "Data fetch success");
                     fragment.busStopItems.addAll(items.getItem());
                     fragment.adapter.notifyDataSetChanged();
+                    System.out.println("아이템 카운트: " + fragment.adapter.getItemCount());
+                    for (int i=0; i<fragment.busStopItems.size(); i++) {
+                        System.out.println("출력: " + fragment.busStopItems.get(i).getNodenm());
+                    }
+                    Log.d("retrofit", "Data fetch success");
                 } else {
                     Log.d("retrofit", "Data fetch fail");
                 }
