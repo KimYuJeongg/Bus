@@ -21,8 +21,6 @@ import com.example.bus.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,7 +29,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private ActivitySearchBinding binding;
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
-    private String key = "9BWhbO2OOt0gFxjT43TFFgz5hK2EAxt+PEO0DTHE1i7lO7pOlN3GhQJgM2F5Yd4cH4fwkoC4UYmwOFoLOzVxng==";
+    private String key = "key";
     private BusStopInterface busStopInterface;
     private RetrofitClient retrofitClient;
 
@@ -60,17 +58,17 @@ public class SearchActivity extends AppCompatActivity {
         retrofitClient = RetrofitClient.getInstance();
         busStopInterface = RetrofitClient.getRetrofitInterface();
 
-        busStopInterface.getBusStop(key, 1, 10, "json", 25, "전통시장").enqueue(new Callback<Example>() {
+        busStopInterface.getBusStop(key, 10, "json", 25, "전통시장").enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
-                if(response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
                     Example example = response.body();
                     Result result = example.getResult();
                     Body body = result.getBody();
                     Items items = body.getItems();
                     Log.d("retrofit", "Data fetch success");
-                    fragment.busStopItems = items.getItem();
+                    fragment.busStopItems.addAll(items.getItem());
+                    fragment.adapter.notifyDataSetChanged();
                 } else {
                     Log.d("retrofit", "Data fetch fail");
                 }
@@ -87,10 +85,10 @@ public class SearchActivity extends AppCompatActivity {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
             if (tab.getPosition() == 0) {
-                    System.out.println("position: 정류장");
-                } else if (tab.getPosition() == 1) {
-                    System.out.println("position: 버스");
-                }
+                System.out.println("position: 정류장");
+            } else if (tab.getPosition() == 1) {
+                System.out.println("position: 버스");
+            }
         }
 
         @Override
