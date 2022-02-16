@@ -77,4 +77,10 @@ public class PlaceholderFragment extends Fragment {
         binding = null;
     }
 
+    public void resetRecyclerView(List<BusStopItem> newItems) {
+        busStopItems.clear();
+        busStopItems.addAll(newItems);
+        adapter.notifyDataSetChanged();
+    }
+
 }

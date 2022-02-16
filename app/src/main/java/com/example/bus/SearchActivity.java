@@ -9,12 +9,9 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.bus.data.Body;
 import com.example.bus.data.BusStopInterface;
-import com.example.bus.data.BusStopItem;
 import com.example.bus.data.Example;
 import com.example.bus.data.Items;
-import com.example.bus.data.Result;
 import com.example.bus.data.RetrofitClient;
 import com.example.bus.databinding.ActivitySearchBinding;
 import com.example.bus.ui.main.PlaceholderFragment;
@@ -30,7 +27,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private ActivitySearchBinding binding;
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
-    private String key = "key";
+    private final String key = "key";
     private BusStopInterface busStopInterface;
     private RetrofitClient retrofitClient;
 
@@ -64,12 +61,10 @@ public class SearchActivity extends AppCompatActivity {
             public void onResponse(Call<Example> call, Response<Example> response) {
                 if (response.isSuccessful()) {
                     Example example = response.body();
-                    Result result = example.getResult();
-                    Body body = result.getBody();
-                    Items items = body.getItems();
-                    fragment.busStopItems.addAll(items.getItem());
-                    fragment.adapter.notifyDataSetChanged();
-                    System.out.println("아이템 카운트: " + fragment.adapter.getItemCount());
+                    Items items = example.getResult().getBody().getItems();
+                    fragment.resetRecyclerView(items.getItem());
+
+                    System.out.println("아이템 카운트items.getItem(): " + items.getItem().toString());
                     for (int i=0; i<fragment.busStopItems.size(); i++) {
                         System.out.println("출력: " + fragment.busStopItems.get(i).getNodenm());
                     }
@@ -120,7 +115,7 @@ public class SearchActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-//            fragment.setSearchResultList(s.toString());
+
         }
     };
 }
