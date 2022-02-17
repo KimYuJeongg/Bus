@@ -64,8 +64,7 @@ public class SearchActivity extends AppCompatActivity {
                     Items items = example.getResult().getBody().getItems();
                     fragment.resetRecyclerView(items.getItem());
 
-                    System.out.println("아이템 카운트items.getItem(): " + items.getItem().toString());
-                    for (int i=0; i<fragment.busStopItems.size(); i++) {
+                    for (int i = 0; i < fragment.busStopItems.size(); i++) {
                         System.out.println("출력: " + fragment.busStopItems.get(i).getNodenm());
                     }
                     Log.d("retrofit", "Data fetch success");
