@@ -13,7 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:text="대전테크노파크"
         android:textColor="@color/text_gray"
         android:textSize="20sp" />
 
@@ -24,7 +23,6 @@
         android:layout_below="@id/busStopName"
         android:layout_marginTop="10dp"
         android:paddingEnd="10dp"
-        android:text="20270"
         android:textColor="@color/colorPrimary" />
 
     <TextView
@@ -33,7 +31,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/busStopName"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@id/busStopId"
-        android:text="대전준법지원센터 방면" />
+        android:layout_toEndOf="@id/busStopId" />
 
 </RelativeLayout>

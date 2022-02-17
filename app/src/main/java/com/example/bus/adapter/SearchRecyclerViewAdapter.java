@@ -39,7 +39,9 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
         public void setBusStopItem(BusStopItem item) {
             busStopName.setText(item.getNodenm());
-            busStopId.setText(item.getNodeno());
+            if(item.getNodeno() != null) {
+                busStopId.setText(item.getNodeno().toString());
+            }
         }
 
     }
