@@ -62,9 +62,9 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         View view = null;
 
         if (viewType == VIEWTYPE_BUS_STOP) {
-            view = inflater.inflate(R.layout.fragment_search_bus_stop_item, parent, false);
+            view = inflater.inflate(R.layout.search_bus_stop_item, parent, false);
         } else if (viewType == VIEWTYPE_BUS) {
-            view = inflater.inflate(R.layout.fragment_search_bus_item, parent, false);
+            view = inflater.inflate(R.layout.search_bus_item, parent, false);
         }
 
         SearchRecyclerViewAdapter.ViewHolder vh = new SearchRecyclerViewAdapter.ViewHolder(view);

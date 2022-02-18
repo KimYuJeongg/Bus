@@ -1,36 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:padding="20dp"
-    tools:context=".SearchBusStopItemFragment">
+    android:padding="20dp" >
 
     <TextView
-        android:id="@+id/busStopName"
+        android:id="@+id/busName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:textColor="@color/text_gray"
-        android:textSize="20sp" />
+        android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/busStopId"
+        android:id="@+id/busArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/busStopName"
-        android:layout_marginTop="10dp"
-        android:paddingEnd="10dp"
-        android:textColor="@color/colorPrimary" />
+        android:layout_toEndOf="@+id/busName"
+        android:layout_alignBaseline="@+id/busName"
+        android:layout_marginStart="15dp" />
 
     <TextView
-        android:id="@+id/busStopLocation"
+        android:id="@+id/busRoute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/busStopName"
-        android:layout_marginTop="10dp"
-        android:layout_toEndOf="@id/busStopId" />
+        android:layout_below="@id/busName"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
