@@ -30,6 +30,7 @@ public class SearchActivity extends AppCompatActivity {
     private final String key = "key";
     private BusStopInterface busStopInterface;
     private PlaceholderFragment fragment;
+    private SectionsPagerAdapter sectionsPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class SearchActivity extends AppCompatActivity {
         binding = ActivitySearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(SearchActivity.this);
+        sectionsPagerAdapter = new SectionsPagerAdapter(SearchActivity.this);
         ViewPager2 pager = binding.viewPager;
         pager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
@@ -84,7 +85,7 @@ public class SearchActivity extends AppCompatActivity {
                     Example example = response.body();
                     Items items = example.getResult().getBody().getItems();
                     fragment.resetRecyclerView(items.getItem());
-
+                    sectionsPagerAdapter.notifyDataSetChanged();
                     for (int i = 0; i < fragment.busStopItems.size(); i++) {
                         System.out.println("출력: " + fragment.busStopItems.get(i).getNodenm());
                     }

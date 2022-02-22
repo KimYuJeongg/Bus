@@ -88,7 +88,13 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     @Override
     public int getItemCount() {
+        System.out.println("사이즈: " + busStopItems.size());
         return busStopItems.size();
+    }
+
+    public void resetItems(List<BusStopItem> newItems) {
+        busStopItems = newItems;
+        notifyDataSetChanged();
     }
 
 }

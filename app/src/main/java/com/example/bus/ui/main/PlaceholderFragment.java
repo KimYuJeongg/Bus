@@ -1,6 +1,5 @@
 package com.example.bus.ui.main;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -86,13 +84,6 @@ public class PlaceholderFragment extends Fragment {
     }
 
     public void resetRecyclerView(List<BusStopItem> newItems) {
-        busStopItems.clear();
-        busStopItems.addAll(newItems);
-        adapter.notifyDataSetChanged();
-        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
-        if (Build.VERSION.SDK_INT >= 26) {
-            ft.setReorderingAllowed(false);
-        }
-        ft.detach(this).attach(this).commit();
+        adapter.resetItems(newItems);
     }
 }
