@@ -29,12 +29,7 @@ public class SearchActivity extends AppCompatActivity {
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
     private final String key = "key";
     private BusStopInterface busStopInterface;
-    private RetrofitClient retrofitClient;
-
-    ViewPager2 pager;
-    TabLayout tabs;
-    EditText searchBox;
-    PlaceholderFragment fragment;
+    private PlaceholderFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +38,46 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(SearchActivity.this);
-        pager = binding.viewPager;
+        ViewPager2 pager = binding.viewPager;
         pager.setAdapter(sectionsPagerAdapter);
-        tabs = binding.tabs;
-        searchBox = binding.searchBox;
+        TabLayout tabs = binding.tabs;
+        EditText searchBox = binding.searchBox;
         fragment = new PlaceholderFragment();
         new TabLayoutMediator(tabs, pager, (tab, position) -> tab.setText(TAB_TITLES[position])).attach();
 
-        tabs.addOnTabSelectedListener(tabSelectedListener);
-        searchBox.addTextChangedListener(textWatcher);
-
-        retrofitClient = RetrofitClient.getInstance();
+        RetrofitClient retrofitClient = RetrofitClient.getInstance();
         busStopInterface = RetrofitClient.getRetrofitInterface();
 
-        busStopInterface.getBusStop(key, 25, "json", 25, "서대전").enqueue(new Callback<Example>() {
+        searchBox.addTextChangedListener(textWatcher);
+        pager.registerOnPageChangeCallback(pageChangeCallback);
+    }
+
+    ViewPager2.OnPageChangeCallback pageChangeCallback = new ViewPager2.OnPageChangeCallback() {
+        @Override
+        public void onPageSelected(int position) {
+            super.onPageSelected(position);
+            if (position == 0) {
+                System.out.println("position: 정류장");
+            } else if (position == 1) {
+                System.out.println("position: 버스");
+            }
+        }
+    };
+
+    TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+        busStopInterface.getBusStop(key, 25, "json", 25, s.toString()).enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
                 if (response.isSuccessful()) {
@@ -78,43 +99,6 @@ public class SearchActivity extends AppCompatActivity {
                 Log.d("retrofit", t.getMessage());
             }
         });
-    }
-
-    TabLayout.OnTabSelectedListener tabSelectedListener = new TabLayout.OnTabSelectedListener() {
-        @Override
-        public void onTabSelected(TabLayout.Tab tab) {
-            if (tab.getPosition() == 0) {
-                System.out.println("position: 정류장");
-            } else if (tab.getPosition() == 1) {
-                System.out.println("position: 버스");
-            }
-        }
-
-        @Override
-        public void onTabUnselected(TabLayout.Tab tab) {
-
-        }
-
-        @Override
-        public void onTabReselected(TabLayout.Tab tab) {
-
-        }
-    };
-
-    TextWatcher textWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
         }
     };
 }
