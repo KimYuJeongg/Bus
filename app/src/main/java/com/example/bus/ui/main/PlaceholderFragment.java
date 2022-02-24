@@ -27,8 +27,8 @@ public class PlaceholderFragment extends Fragment {
     private PageViewModel pageViewModel;
     private FragmentSearchBinding binding;
 
-    public List<BusStopItem> busStopItems = new ArrayList<>();
-    public SearchRecyclerViewAdapter adapter = new SearchRecyclerViewAdapter(busStopItems);
+    public List<BusStopItem> items = new ArrayList<>();
+    public SearchRecyclerViewAdapter adapter = new SearchRecyclerViewAdapter(items);
 
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -84,6 +84,8 @@ public class PlaceholderFragment extends Fragment {
     }
 
     public void resetRecyclerView(List<BusStopItem> newItems) {
-        adapter.resetItems(newItems);
+        items.clear();
+        items.addAll(newItems);
+        adapter.notifyDataSetChanged();
     }
 }

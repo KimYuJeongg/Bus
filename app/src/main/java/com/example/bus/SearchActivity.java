@@ -19,6 +19,9 @@ import com.example.bus.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,8 +32,8 @@ public class SearchActivity extends AppCompatActivity {
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
     private final String key = "key";
     private BusStopInterface busStopInterface;
-    private PlaceholderFragment fragment;
     private SectionsPagerAdapter sectionsPagerAdapter;
+    List<PlaceholderFragment> fragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +41,15 @@ public class SearchActivity extends AppCompatActivity {
         binding = ActivitySearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        sectionsPagerAdapter = new SectionsPagerAdapter(SearchActivity.this);
+        fragments = new ArrayList<>();
+        fragments.add(PlaceholderFragment.newInstance(1));
+        fragments.add(PlaceholderFragment.newInstance(2));
+        sectionsPagerAdapter = new SectionsPagerAdapter(SearchActivity.this, fragments);
         ViewPager2 pager = binding.viewPager;
         pager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         EditText searchBox = binding.searchBox;
-        fragment = new PlaceholderFragment();
+
         new TabLayoutMediator(tabs, pager, (tab, position) -> tab.setText(TAB_TITLES[position])).attach();
 
         RetrofitClient retrofitClient = RetrofitClient.getInstance();
@@ -84,11 +90,9 @@ public class SearchActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Example example = response.body();
                     Items items = example.getResult().getBody().getItems();
-                    fragment.resetRecyclerView(items.getItem());
+                    fragments.get(1).resetRecyclerView(items.getItem());
+//                    fragment.resetRecyclerView(items.getItem());
                     sectionsPagerAdapter.notifyDataSetChanged();
-                    for (int i = 0; i < fragment.busStopItems.size(); i++) {
-                        System.out.println("출력: " + fragment.busStopItems.get(i).getNodenm());
-                    }
                     Log.d("retrofit", "Data fetch success");
                 } else {
                     Log.d("retrofit", "Data fetch fail");
