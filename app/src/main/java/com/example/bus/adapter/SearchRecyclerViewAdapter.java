@@ -80,8 +80,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (mItemViewType == VIEWTYPE_BUS_STOP) {
-            BusStopItem item = busStopItems.get(position);
-            holder.setBusStopItem(item);
+            holder.setBusStopItem(busStopItems.get(position));
         } else if (mItemViewType == VIEWTYPE_BUS) {
         }
     }
@@ -90,11 +89,6 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
     public int getItemCount() {
         System.out.println("사이즈: " + busStopItems.size());
         return busStopItems.size();
-    }
-
-    public void resetItems(List<BusStopItem> newItems) {
-        busStopItems = newItems;
-        notifyDataSetChanged();
     }
 
 }
