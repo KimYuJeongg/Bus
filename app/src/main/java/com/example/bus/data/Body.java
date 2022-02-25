@@ -7,7 +7,8 @@ public class Body {
 
     @SerializedName("items")
     @Expose
-    private Items items;
+    private BusStopItems items;
+
     @SerializedName("numOfRows")
     @Expose
     private Integer numOfRows;
@@ -18,11 +19,11 @@ public class Body {
     @Expose
     private Integer totalCount;
 
-    public Items getItems() {
+    public BusStopItems getItems() {
         return items;
     }
 
-    public void setItems(Items items) {
+    public void setItems(BusStopItems items) {
         this.items = items;
     }
 

@@ -18,7 +18,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     public static final int VIEWTYPE_BUS_STOP = 0;
     public static final int VIEWTYPE_BUS = 1;
-    int mItemViewType;
+    public int mItemViewType;
 
     List<BusStopItem> busStopItems;
 
@@ -43,6 +43,10 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
                 busStopId.setText(item.getNodeno().toString());
             }
         }
+
+    }
+
+    public SearchRecyclerViewAdapter() {
 
     }
 
@@ -87,7 +91,6 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     @Override
     public int getItemCount() {
-        System.out.println("사이즈: " + busStopItems.size());
         return busStopItems.size();
     }
 

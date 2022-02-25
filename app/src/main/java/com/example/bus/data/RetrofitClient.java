@@ -14,6 +14,7 @@ public class RetrofitClient {
 
     private static RetrofitClient instance = null;
     private static BusStopInterface busStopInterface;
+    private static BusInterface busInterface;
     private static String baseUrl = "http://apis.data.go.kr/1613000/";
 
     private RetrofitClient() {
@@ -28,7 +29,9 @@ public class RetrofitClient {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
+
         busStopInterface = retrofit.create(BusStopInterface.class);
+        busInterface = retrofit.create(BusInterface.class);
     }
 
     private HttpLoggingInterceptor httpLoggingInterceptor() {
@@ -49,8 +52,12 @@ public class RetrofitClient {
         return instance;
     }
 
-    public static BusStopInterface getRetrofitInterface() {
+    public BusStopInterface getBusStopRetrofitInterface() {
         return busStopInterface;
+    }
+
+    public BusInterface getBusRetrofitInterface() {
+        return busInterface;
     }
 
 }
