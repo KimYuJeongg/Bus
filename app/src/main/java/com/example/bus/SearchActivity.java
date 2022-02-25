@@ -90,10 +90,8 @@ public class SearchActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Example example = response.body();
                     Items items = example.getResult().getBody().getItems();
-                    fragments.get(1).resetRecyclerView(items.getItem());
-//                    fragment.resetRecyclerView(items.getItem());
+                    fragments.get(0).resetRecyclerView(items.getItem());
                     sectionsPagerAdapter.notifyDataSetChanged();
-                    Log.d("retrofit", "Data fetch success");
                 } else {
                     Log.d("retrofit", "Data fetch fail");
                 }
@@ -101,7 +99,7 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
-                Log.d("retrofit", t.getMessage());
+                Log.e("retrofit", t.getMessage());
             }
         });
         }

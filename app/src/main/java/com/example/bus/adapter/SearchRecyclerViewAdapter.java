@@ -91,4 +91,9 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         return busStopItems.size();
     }
 
+    public void resetItems(List<BusStopItem> newItems) {
+        this.busStopItems = newItems;
+        notifyDataSetChanged();
+    }
+
 }
