@@ -1,19 +1,19 @@
-package com.example.bus.data;
+package com.example.bus.data.bus;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Example {
+public class BusExample {
 
     @SerializedName("response")
     @Expose
-    private Result result;
+    private BusResult result;
 
-    public Result getResult() {
+    public BusResult getResult() {
         return result;
     }
 
-    public void setResult(Result result) {
+    public void setResult(BusResult result) {
         this.result = result;
     }
 

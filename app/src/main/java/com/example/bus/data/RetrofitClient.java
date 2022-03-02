@@ -2,6 +2,8 @@ package com.example.bus.data;
 
 import android.util.Log;
 
+import com.example.bus.data.bus.BusInterface;
+import com.example.bus.data.busstop.BusStopInterface;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

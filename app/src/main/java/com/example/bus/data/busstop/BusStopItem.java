@@ -1,4 +1,4 @@
-package com.example.bus.data;
+package com.example.bus.data.busstop;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

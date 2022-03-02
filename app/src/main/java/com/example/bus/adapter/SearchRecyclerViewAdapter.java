@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bus.R;
-import com.example.bus.data.BusStopItem;
+import com.example.bus.data.bus.BusItem;
+import com.example.bus.data.busstop.BusStopItem;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
     public int mItemViewType;
 
     List<BusStopItem> busStopItems;
+    List<BusItem> busItems;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -39,19 +41,17 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
         public void setBusStopItem(BusStopItem item) {
             busStopName.setText(item.getNodenm());
-            if(item.getNodeno() != null) {
+            if (item.getNodeno() != null) {
                 busStopId.setText(item.getNodeno().toString());
             }
         }
 
-    }
+        public void setBusItem(BusItem item) {
+            busName.setText(item.getRouteno().toString());
+            busArea.setText("대전");
+            busRoute.setText(item.getEndnodenm() + " ⇆ " + item.getStartnodenm());
+        }
 
-    public SearchRecyclerViewAdapter() {
-
-    }
-
-    public SearchRecyclerViewAdapter(List<BusStopItem> busStopItems) {
-        this.busStopItems = busStopItems;
     }
 
     public void setItemViewType(int viewType) {
@@ -86,16 +86,34 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         if (mItemViewType == VIEWTYPE_BUS_STOP) {
             holder.setBusStopItem(busStopItems.get(position));
         } else if (mItemViewType == VIEWTYPE_BUS) {
+            holder.setBusItem(busItems.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        return busStopItems.size();
+        if (mItemViewType == VIEWTYPE_BUS_STOP) {
+            if(busStopItems == null) {
+                return 0;
+            } else {
+                return busStopItems.size();
+            }
+        } else {
+            if(busItems == null) {
+                return 0;
+            } else {
+                return busItems.size();
+            }
+        }
     }
 
-    public void resetItems(List<BusStopItem> newItems) {
+    public void resetBusStopItems(List<BusStopItem> newItems) {
         this.busStopItems = newItems;
+        notifyDataSetChanged();
+    }
+
+    public void resetBusItems(List<BusItem> newItems) {
+        this.busItems = newItems;
         notifyDataSetChanged();
     }
 

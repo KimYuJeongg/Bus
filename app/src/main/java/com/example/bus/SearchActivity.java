@@ -9,13 +9,13 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.bus.adapter.SearchRecyclerViewAdapter;
-import com.example.bus.data.BusInterface;
-import com.example.bus.data.BusItems;
-import com.example.bus.data.BusStopInterface;
-import com.example.bus.data.Example;
-import com.example.bus.data.BusStopItems;
 import com.example.bus.data.RetrofitClient;
+import com.example.bus.data.bus.BusExample;
+import com.example.bus.data.bus.BusInterface;
+import com.example.bus.data.bus.BusItems;
+import com.example.bus.data.busstop.BusStopExample;
+import com.example.bus.data.busstop.BusStopInterface;
+import com.example.bus.data.busstop.BusStopItems;
 import com.example.bus.databinding.ActivitySearchBinding;
 import com.example.bus.ui.main.PlaceholderFragment;
 import com.example.bus.ui.main.SectionsPagerAdapter;
@@ -34,7 +34,8 @@ public class SearchActivity extends AppCompatActivity {
     private ActivitySearchBinding binding;
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
     private final String key = "key";
-    List<PlaceholderFragment> fragments;
+    private List<PlaceholderFragment> fragments;
+    private int page = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +64,10 @@ public class SearchActivity extends AppCompatActivity {
             super.onPageSelected(position);
             if (position == 0) {
                 System.out.println("position: 정류장");
+                page = 0;
             } else if (position == 1) {
                 System.out.println("position: 버스");
+                page = 1;
             }
         }
     };
@@ -73,8 +76,6 @@ public class SearchActivity extends AppCompatActivity {
         RetrofitClient retrofitClient = RetrofitClient.getInstance();
         BusStopInterface busStopInterface = retrofitClient.getBusStopRetrofitInterface();
         BusInterface busInterface = retrofitClient.getBusRetrofitInterface();
-
-        SearchRecyclerViewAdapter adapter = new SearchRecyclerViewAdapter();
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -88,35 +89,42 @@ public class SearchActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-            if (adapter.mItemViewType == 0) {
-                busStopInterface.getBusStop(key, 25, "json", 25, s.toString()).enqueue(new Callback<Example>() {
+            if (page == 0) {
+                busStopInterface.getBusStop(key, 25, "json", 25, s.toString()).enqueue(new Callback<BusStopExample>() {
                     @Override
-                    public void onResponse(Call<Example> call, Response<Example> response) {
+                    public void onResponse(Call<BusStopExample> call, Response<BusStopExample> response) {
                         if (response.isSuccessful()) {
-                            Example example = response.body();
+                            BusStopExample example = response.body();
                             BusStopItems items = example.getResult().getBody().getItems();
-                            fragments.get(0).resetRecyclerView(items.getItem());
+                            fragments.get(0).resetBusStopItems(items.getBusStopItem());
+                            Log.d("retrofit", "Bus Stop Data fetch success");
                         } else {
-                            Log.d("retrofit", "Data fetch fail");
+                            Log.d("retrofit", "Bus Stop Data fetch fail");
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<Example> call, Throwable t) {
-                        Log.e("retrofit", t.getMessage());
+                    public void onFailure(Call<BusStopExample> call, Throwable t) {
+                        Log.e("Bus Stop retrofit", t.getMessage());
                     }
                 });
-            } else if (adapter.mItemViewType == 1) {
-                busInterface.getBus(key, 10, "json", 25, s.toString()).enqueue(new Callback<Example>() {
+            } else if (page == 1) {
+                busInterface.getBus(key, 10, "json", 25, s.toString()).enqueue(new Callback<BusExample>() {
                     @Override
-                    public void onResponse(Call<Example> call, Response<Example> response) {
+                    public void onResponse(Call<BusExample> call, Response<BusExample> response) {
                         if (response.isSuccessful()) {
+                            BusExample example = response.body();
+                            BusItems items = example.getResult().getBody().getItems();
+                            fragments.get(1).resetBusItems(items.getBusItem());
+                            Log.d("retrofit", "Bus Data fetch success");
+                        } else {
+                            Log.d("retrofit", "Bus Data fetch fail");
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<Example> call, Throwable t) {
-
+                    public void onFailure(Call<BusExample> call, Throwable t) {
+                        Log.e("Bus retrofit", t.getMessage());
                     }
                 });
             }
