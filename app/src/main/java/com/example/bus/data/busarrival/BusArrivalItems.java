@@ -11,11 +11,11 @@ public class BusArrivalItems {
     @Expose
     private List<BusArrivalItem> busArrivalItem = null;
 
-    public List<BusArrivalItem> getBusStopItem() {
+    public List<BusArrivalItem> getBusArrivalItem() {
         return busArrivalItem;
     }
 
-    public void setBusStopItem(List<BusArrivalItem> busStopItem) {
+    public void setBusArrivalItem(List<BusArrivalItem> busStopItem) {
         this.busArrivalItem = busStopItem;
     }
 
