@@ -2,12 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:background="?attr/selectableItemBackground"
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:padding="20dp" >
 
     <TextView
-        android:id="@+id/busStopName"
+        android:id="@+id/busStopNameItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -15,20 +16,20 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/busStopId"
+        android:id="@+id/busStopIdItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/busStopName"
+        android:layout_below="@id/busStopNameItem"
         android:layout_marginTop="10dp"
         android:paddingEnd="10dp"
         android:textColor="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/busStopLocation"
+        android:id="@+id/busStopLocationItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/busStopName"
+        android:layout_below="@id/busStopNameItem"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@id/busStopId" />
+        android:layout_toEndOf="@id/busStopIdItem" />
 
 </RelativeLayout>

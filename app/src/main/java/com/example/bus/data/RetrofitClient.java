@@ -3,6 +3,7 @@ package com.example.bus.data;
 import android.util.Log;
 
 import com.example.bus.data.bus.BusInterface;
+import com.example.bus.data.busarrival.BusArrivalInterface;
 import com.example.bus.data.busstop.BusStopInterface;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -17,6 +18,7 @@ public class RetrofitClient {
     private static RetrofitClient instance = null;
     private static BusStopInterface busStopInterface;
     private static BusInterface busInterface;
+    private static BusArrivalInterface busArrivalInterface;
     private static String baseUrl = "http://apis.data.go.kr/1613000/";
 
     private RetrofitClient() {
@@ -34,6 +36,7 @@ public class RetrofitClient {
 
         busStopInterface = retrofit.create(BusStopInterface.class);
         busInterface = retrofit.create(BusInterface.class);
+        busArrivalInterface = retrofit.create(BusArrivalInterface.class);
     }
 
     private HttpLoggingInterceptor httpLoggingInterceptor() {
@@ -60,6 +63,10 @@ public class RetrofitClient {
 
     public BusInterface getBusRetrofitInterface() {
         return busInterface;
+    }
+
+    public BusArrivalInterface getBusArrivalRetrofitInterface() {
+        return busArrivalInterface;
     }
 
 }

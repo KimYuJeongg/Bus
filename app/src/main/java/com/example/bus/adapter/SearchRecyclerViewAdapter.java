@@ -1,6 +1,7 @@
 package com.example.bus.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bus.BusStopActivity;
 import com.example.bus.R;
 import com.example.bus.data.bus.BusItem;
 import com.example.bus.data.busstop.BusStopItem;
@@ -31,12 +33,28 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            busStopName = itemView.findViewById(R.id.busStopName);
-            busStopId = itemView.findViewById(R.id.busStopId);
-            busStopLocation = itemView.findViewById(R.id.busStopLocation);
-            busName = itemView.findViewById(R.id.busName);
-            busArea = itemView.findViewById(R.id.busArea);
-            busRoute = itemView.findViewById(R.id.busRoute);
+            busStopName = itemView.findViewById(R.id.busStopNameItem);
+            busStopId = itemView.findViewById(R.id.busStopIdItem);
+            busStopLocation = itemView.findViewById(R.id.busStopLocationItem);
+            busName = itemView.findViewById(R.id.busNameItem);
+            busArea = itemView.findViewById(R.id.busAreaItem);
+            busRoute = itemView.findViewById(R.id.busRouteItem);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), BusStopActivity.class);
+                    intent.putExtra("nodenm", busStopItems.get(getLayoutPosition()).getNodenm());
+                    String[] busStopData = {
+                            busStopItems.get(getLayoutPosition()).getNodenm(),
+                            busStopItems.get(getLayoutPosition()).getNodeno().toString(),
+                            busStopItems.get(getLayoutPosition()).getGpslati() + " / " + busStopItems.get(getLayoutPosition()).getGpslong(),
+                            busStopItems.get(getLayoutPosition()).getNodeid()
+                    };
+                    intent.putExtra("busStopData", busStopData);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
 
         public void setBusStopItem(BusStopItem item) {
