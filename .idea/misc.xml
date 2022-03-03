@@ -4,27 +4,27 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Bus/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.38229166666666664" />
-        <entry key="..\:/Bus/app/src/main/res/drawable/bus_type_radius.xml" value="0.329" />
-        <entry key="..\:/Bus/app/src/main/res/drawable/circle_button_style.xml" value="0.329" />
+        <entry key="..\:/Bus/app/src/main/res/drawable/circle_button_style.xml" value="0.32592592592592595" />
         <entry key="..\:/Bus/app/src/main/res/drawable/edit_text_style.xml" value="0.3398148148148148" />
         <entry key="..\:/Bus/app/src/main/res/drawable/ic_bell.xml" value="0.3398148148148148" />
         <entry key="..\:/Bus/app/src/main/res/drawable/ic_bus.xml" value="0.3398148148148148" />
-        <entry key="..\:/Bus/app/src/main/res/drawable/ic_empty_star.xml" value="0.329" />
+        <entry key="..\:/Bus/app/src/main/res/drawable/ic_empty_star.xml" value="0.3398148148148148" />
         <entry key="..\:/Bus/app/src/main/res/drawable/ic_launcher_background.xml" value="0.38229166666666664" />
+        <entry key="..\:/Bus/app/src/main/res/drawable/ic_round_star_24.xml" value="0.32592592592592595" />
         <entry key="..\:/Bus/app/src/main/res/drawable/ic_search.xml" value="0.29212962962962963" />
         <entry key="..\:/Bus/app/src/main/res/drawable/ic_settings.xml" value="0.3398148148148148" />
         <entry key="..\:/Bus/app/src/main/res/drawable/ic_settings_.xml" value="0.3398148148148148" />
-        <entry key="..\:/Bus/app/src/main/res/drawable/ic_star.xml" value="0.329" />
-        <entry key="..\:/Bus/app/src/main/res/layout/activity_bus_stop.xml" value="0.36614583333333334" />
+        <entry key="..\:/Bus/app/src/main/res/drawable/ic_star.xml" value="0.3398148148148148" />
+        <entry key="..\:/Bus/app/src/main/res/layout/activity_bus_stop.xml" value="0.33" />
         <entry key="..\:/Bus/app/src/main/res/layout/activity_main.xml" value="0.3515625" />
         <entry key="..\:/Bus/app/src/main/res/layout/activity_search.xml" value="0.25" />
-        <entry key="..\:/Bus/app/src/main/res/layout/arrival_bus_item.xml" value="0.33" />
+        <entry key="..\:/Bus/app/src/main/res/layout/arrival_bus_item.xml" value="0.32546296296296295" />
         <entry key="..\:/Bus/app/src/main/res/layout/asd.xml" value="0.31157407407407406" />
         <entry key="..\:/Bus/app/src/main/res/layout/bus_item.xml" value="0.33" />
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_bus_list.xml" value="0.24861111111111112" />
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_item.xml" value="0.32546296296296295" />
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_item_list.xml" value="0.3125" />
-        <entry key="..\:/Bus/app/src/main/res/layout/fragment_search.xml" value="0.25" />
+        <entry key="..\:/Bus/app/src/main/res/layout/fragment_search.xml" value="0.33" />
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_search_bus_item.xml" value="0.5" />
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_search_bus_stop_item.xml" value="0.5" />
         <entry key="..\:/Bus/app/src/main/res/layout/fragment_station_list.xml" value="0.32546296296296295" />

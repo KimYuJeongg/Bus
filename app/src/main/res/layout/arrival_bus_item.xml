@@ -19,7 +19,6 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:text="318"
             android:textSize="22sp" />
 
         <TextView
@@ -28,16 +27,14 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/busName"
-            android:background="@drawable/bus_type_radius"
-            android:text="간선버스" />
+            android:background="@drawable/bus_type_radius" />
 
         <TextView
             android:id="@+id/leftStops"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/divideLine"
-            android:text="4번째 전" />
+            android:layout_toStartOf="@id/divideLine" />
 
         <TextView
             android:id="@+id/divideLine"
@@ -55,8 +52,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:layout_toStartOf="@id/busBookMarkButton"
-            android:textSize="17sp"
-            android:text="18분" />
+            android:textSize="17sp" />
 
         <ImageButton
             android:id="@+id/busBookMarkButton"
@@ -64,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@id/alarmButton"
+            android:layout_marginEnd="5dp"
             android:background="@color/transparent"
             app:srcCompat="@drawable/ic_empty_star" />
 
