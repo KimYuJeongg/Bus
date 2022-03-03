@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.Bus" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#4270fc</item>
-        <item name="colorPrimaryVariant">#1c54ff</item>
-        <item name="colorAccent">#a1b8ff</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
