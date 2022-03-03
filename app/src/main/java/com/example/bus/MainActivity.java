@@ -8,7 +8,6 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,22 +24,20 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
 
         ArrayList<String> list = new ArrayList<>();
         for(int i=0; i<30; i++) {
             list.add(i + "") ;
         }
 
-        // 리사이클러뷰에 LinearLayoutManager 객체 지정.
         RecyclerView recyclerView = findViewById(R.id.recyclerView) ;
-        recyclerView.setLayoutManager(new LinearLayoutManager(this)) ;
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager) ;
 
-        // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
         MainRecyclerViewAdapter adapter = new MainRecyclerViewAdapter(list) ;
         recyclerView.setAdapter(adapter) ;
-
-        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), 1));
-    }
+        }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
