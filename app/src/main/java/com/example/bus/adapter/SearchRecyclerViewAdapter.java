@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bus.BusActivity;
 import com.example.bus.BusStopActivity;
 import com.example.bus.R;
 import com.example.bus.data.bus.BusItem;
@@ -43,16 +44,30 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), BusStopActivity.class);
-                    intent.putExtra("nodenm", busStopItems.get(getLayoutPosition()).getNodenm());
-                    String[] busStopData = {
-                            busStopItems.get(getLayoutPosition()).getNodenm(),
-                            busStopItems.get(getLayoutPosition()).getNodeno().toString(),
-                            busStopItems.get(getLayoutPosition()).getGpslati() + " / " + busStopItems.get(getLayoutPosition()).getGpslong(),
-                            busStopItems.get(getLayoutPosition()).getNodeid()
-                    };
-                    intent.putExtra("busStopData", busStopData);
-                    v.getContext().startActivity(intent);
+                    if (mItemViewType == 0) {
+                        Intent intent = new Intent(v.getContext(), BusStopActivity.class);
+                        String[] busStopData = {
+                                busStopItems.get(getLayoutPosition()).getNodenm(),
+                                busStopItems.get(getLayoutPosition()).getNodeno().toString(),
+                                busStopItems.get(getLayoutPosition()).getGpslati() + " / " + busStopItems.get(getLayoutPosition()).getGpslong(),
+                                busStopItems.get(getLayoutPosition()).getNodeid()
+                        };
+                        intent.putExtra("busStopData", busStopData);
+                        v.getContext().startActivity(intent);
+                    } else if (mItemViewType == 1) {
+                        Intent intent = new Intent(v.getContext(), BusActivity.class);
+                        String[] busRouteData = {
+                                busItems.get(getLayoutPosition()).getRouteid(),
+                                busItems.get(getLayoutPosition()).getRouteno().toString(),
+                                busItems.get(getLayoutPosition()).getRoutetp(),
+                                busItems.get(getLayoutPosition()).getStartnodenm(),
+                                busItems.get(getLayoutPosition()).getEndnodenm(),
+                                busItems.get(getLayoutPosition()).getStartvehicletime(),
+                                busItems.get(getLayoutPosition()).getEndvehicletime().toString()
+                        };
+                        intent.putExtra("busRouteData", busRouteData);
+                        v.getContext().startActivity(intent);
+                    }
                 }
             });
         }
@@ -111,13 +126,13 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
     @Override
     public int getItemCount() {
         if (mItemViewType == VIEWTYPE_BUS_STOP) {
-            if(busStopItems == null) {
+            if (busStopItems == null) {
                 return 0;
             } else {
                 return busStopItems.size();
             }
         } else {
-            if(busItems == null) {
+            if (busItems == null) {
                 return 0;
             } else {
                 return busItems.size();
