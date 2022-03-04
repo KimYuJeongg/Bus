@@ -29,7 +29,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/color_primary_text"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -51,8 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="17sp" />
             </LinearLayout>
 
             <TextView
@@ -62,8 +61,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="5dp"
                 android:layout_toStartOf="@id/mainBookMarkButton"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <ImageButton
                 android:id="@+id/mainBookMarkButton"
@@ -73,7 +71,7 @@
                 android:layout_toStartOf="@id/notificationButton"
                 android:backgroundTint="@color/transparent"
                 app:srcCompat="@drawable/ic_empty_star"
-                app:tint="#FFF389" />
+                app:tint="#F3DA00" />
 
             <ImageButton
                 android:id="@+id/notificationButton"

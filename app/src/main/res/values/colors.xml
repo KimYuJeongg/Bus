@@ -13,6 +13,7 @@
     <color name="status_bar_color1">#9900DCAD</color>
     <color name="status_bar_color2">#9989DBEF</color>
     <color name="sky_blue">#89DBEF</color>
+    <color name="color_primary_text">#01C89D</color>
     <color name="light_gray">#d4d4d4</color>
     <color name="text_gray">#636363</color>
     <color name="transparent">#00000000</color>
