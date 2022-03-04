@@ -15,7 +15,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".BusStopActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SearchActivity"
             android:exported="true"

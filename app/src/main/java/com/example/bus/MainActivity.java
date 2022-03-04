@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
+        toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
 
         ArrayList<String> list = new ArrayList<>();
         for(int i=0; i<30; i++) {
@@ -58,5 +59,15 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public int getStatusBarHeight()
+    {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+            result = getResources().getDimensionPixelSize(resourceId);
+
+        return result;
     }
 }

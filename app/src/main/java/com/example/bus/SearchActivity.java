@@ -19,6 +19,7 @@ import com.example.bus.data.busstop.BusStopItems;
 import com.example.bus.databinding.ActivitySearchBinding;
 import com.example.bus.ui.main.PlaceholderFragment;
 import com.example.bus.ui.main.SectionsPagerAdapter;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -43,6 +44,8 @@ public class SearchActivity extends AppCompatActivity {
         binding = ActivitySearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        AppBarLayout appBarLayout = findViewById(R.id.appbar);
+        appBarLayout.setPadding(0, getStatusBarHeight(), 0, 0);
         fragments = new ArrayList<>();
         fragments.add(PlaceholderFragment.newInstance(1));
         fragments.add(PlaceholderFragment.newInstance(2));
@@ -130,4 +133,14 @@ public class SearchActivity extends AppCompatActivity {
             }
         }
     };
+
+    public int getStatusBarHeight()
+    {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+            result = getResources().getDimensionPixelSize(resourceId);
+
+        return result;
+    }
 }
