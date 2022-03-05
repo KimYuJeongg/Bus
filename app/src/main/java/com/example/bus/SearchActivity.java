@@ -34,7 +34,6 @@ public class SearchActivity extends AppCompatActivity {
 
     private ActivitySearchBinding binding;
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
-    private final String key = "key";
     private List<PlaceholderFragment> fragments;
     private int page = 0;
 
@@ -79,6 +78,7 @@ public class SearchActivity extends AppCompatActivity {
         RetrofitClient retrofitClient = RetrofitClient.getInstance();
         BusStopInterface busStopInterface = retrofitClient.getBusStopRetrofitInterface();
         BusInterface busInterface = retrofitClient.getBusRetrofitInterface();
+        final String API_KEY = BuildConfig.API_KEY;
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -93,7 +93,7 @@ public class SearchActivity extends AppCompatActivity {
         @Override
         public void afterTextChanged(Editable s) {
             if (page == 0) {
-                busStopInterface.getBusStop(key, 25, "json", 25, s.toString()).enqueue(new Callback<BusStopExample>() {
+                busStopInterface.getBusStop(API_KEY, 25, "json", 25, s.toString()).enqueue(new Callback<BusStopExample>() {
                     @Override
                     public void onResponse(Call<BusStopExample> call, Response<BusStopExample> response) {
                         if (response.isSuccessful()) {
@@ -112,7 +112,7 @@ public class SearchActivity extends AppCompatActivity {
                     }
                 });
             } else if (page == 1) {
-                busInterface.getBus(key, 10, "json", 25, s.toString()).enqueue(new Callback<BusExample>() {
+                busInterface.getBus(API_KEY, 10, "json", 25, s.toString()).enqueue(new Callback<BusExample>() {
                     @Override
                     public void onResponse(Call<BusExample> call, Response<BusExample> response) {
                         if (response.isSuccessful()) {

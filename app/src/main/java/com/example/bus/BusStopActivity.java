@@ -27,6 +27,7 @@ public class BusStopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus_stop);
 
+        final String API_KEY = BuildConfig.API_KEY;
         TextView busStopName = findViewById(R.id.busStopName);
         TextView busStopId = findViewById(R.id.busStopId);
         TextView busStopLocation = findViewById(R.id.busStopLocation);
@@ -40,8 +41,8 @@ public class BusStopActivity extends AppCompatActivity {
 
         RetrofitClient retrofitClient = RetrofitClient.getInstance();
         BusArrivalInterface busArrivalInterface = retrofitClient.getBusArrivalRetrofitInterface();
-        String key = "key";
-        busArrivalInterface.getArrivalBus(key, 10, "json", 25, intent.getStringArrayExtra("busStopData")[3]).enqueue(new Callback<BusArrivalExample>() {
+
+        busArrivalInterface.getArrivalBus(API_KEY, 10, "json", 25, intent.getStringArrayExtra("busStopData")[3]).enqueue(new Callback<BusArrivalExample>() {
             @Override
             public void onResponse(Call<BusArrivalExample> call, Response<BusArrivalExample> response) {
                 BusArrivalExample example = response.body();
