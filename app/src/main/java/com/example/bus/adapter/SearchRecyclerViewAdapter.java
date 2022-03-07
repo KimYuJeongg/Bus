@@ -80,7 +80,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         }
 
         public void setBusItem(BusItem item) {
-            busName.setText(item.getRouteno().toString());
+            busName.setText(item.getRouteno());
             busArea.setText("대전");
             busRoute.setText(item.getEndnodenm() + " ⇆ " + item.getStartnodenm());
         }

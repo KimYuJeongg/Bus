@@ -16,7 +16,7 @@ public class BusItem {
     private String routeid;
     @SerializedName("routeno")
     @Expose
-    private Integer routeno;
+    private String routeno;
     @SerializedName("routetp")
     @Expose
     private String routetp;
@@ -51,11 +51,11 @@ public class BusItem {
         this.routeid = routeid;
     }
 
-    public Integer getRouteno() {
+    public String getRouteno() {
         return routeno;
     }
 
-    public void setRouteno(Integer routeno) {
+    public void setRouteno(String routeno) {
         this.routeno = routeno;
     }
 
