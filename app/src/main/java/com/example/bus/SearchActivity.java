@@ -65,10 +65,8 @@ public class SearchActivity extends AppCompatActivity {
         public void onPageSelected(int position) {
             super.onPageSelected(position);
             if (position == 0) {
-                System.out.println("position: 정류장");
                 page = 0;
             } else if (position == 1) {
-                System.out.println("position: 버스");
                 page = 1;
             }
         }
@@ -92,44 +90,46 @@ public class SearchActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-            if (page == 0) {
-                busStopInterface.getBusStop(API_KEY, 25, "json", 25, s.toString()).enqueue(new Callback<BusStopExample>() {
-                    @Override
-                    public void onResponse(Call<BusStopExample> call, Response<BusStopExample> response) {
-                        if (response.isSuccessful()) {
-                            BusStopExample example = response.body();
-                            BusStopItems items = example.getResult().getBody().getItems();
-                            fragments.get(0).resetBusStopItems(items.getBusStopItem());
-                            Log.d("retrofit", "Bus Stop Data fetch success");
-                        } else {
-                            Log.d("retrofit", "Bus Stop Data fetch fail");
+            if(!(s.toString().trim().isEmpty())) {
+                if (page == 0) {
+                    busStopInterface.getBusStop(API_KEY, 25, "json", 25, s.toString()).enqueue(new Callback<BusStopExample>() {
+                        @Override
+                        public void onResponse(Call<BusStopExample> call, Response<BusStopExample> response) {
+                            if (response.isSuccessful()) {
+                                BusStopExample example = response.body();
+                                BusStopItems items = example.getResult().getBody().getItems();
+                                fragments.get(0).resetBusStopItems(items.getBusStopItem());
+                                Log.d("retrofit", "Bus Stop Data fetch success");
+                            } else {
+                                Log.d("retrofit", "Bus Stop Data fetch fail");
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<BusStopExample> call, Throwable t) {
-                        Log.e("Bus Stop retrofit", t.getMessage());
-                    }
-                });
-            } else if (page == 1) {
-                busInterface.getBus(API_KEY, 10, "json", 25, s.toString()).enqueue(new Callback<BusExample>() {
-                    @Override
-                    public void onResponse(Call<BusExample> call, Response<BusExample> response) {
-                        if (response.isSuccessful()) {
-                            BusExample example = response.body();
-                            BusItems items = example.getResult().getBody().getItems();
-                            fragments.get(1).resetBusItems(items.getBusItem());
-                            Log.d("retrofit", "Bus Data fetch success");
-                        } else {
-                            Log.d("retrofit", "Bus Data fetch fail");
+                        @Override
+                        public void onFailure(Call<BusStopExample> call, Throwable t) {
+                            Log.e("Bus Stop retrofit", t.getMessage());
                         }
-                    }
+                    });
+                } else if (page == 1) {
+                    busInterface.getBus(API_KEY, 10, "json", 25, s.toString()).enqueue(new Callback<BusExample>() {
+                        @Override
+                        public void onResponse(Call<BusExample> call, Response<BusExample> response) {
+                            if (response.isSuccessful()) {
+                                BusExample example = response.body();
+                                BusItems items = example.getResult().getBody().getItems();
+                                fragments.get(1).resetBusItems(items.getBusItem());
+                                Log.d("retrofit", "Bus Data fetch success");
+                            } else {
+                                Log.d("retrofit", "Bus Data fetch fail");
+                            }
+                        }
 
-                    @Override
-                    public void onFailure(Call<BusExample> call, Throwable t) {
-                        Log.e("Bus retrofit", t.getMessage());
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<BusExample> call, Throwable t) {
+                            Log.e("Bus retrofit", t.getMessage());
+                        }
+                    });
+                }
             }
         }
     };
