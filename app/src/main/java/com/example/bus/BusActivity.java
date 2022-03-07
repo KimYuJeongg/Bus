@@ -3,6 +3,7 @@ package com.example.bus;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -42,12 +43,12 @@ public class BusActivity extends AppCompatActivity {
         String[] busRouteData = intent.getStringArrayExtra("busRouteData");
         busName.setText(busRouteData[1]);
         busType.setText(busRouteData[2]);
-        busStartStop.setText(busRouteData[3]);
-        busEndStop.setText(busRouteData[4]);
+        busStartStop.setText(busRouteData[3] + " 방향");
+        busEndStop.setText(busRouteData[4] + " 방향");
         RetrofitClient retrofitClient = RetrofitClient.getInstance();
         BusRouteInterface busRouteInterface = retrofitClient.getBusRouteRetrofitInterface();
 
-        busRouteInterface.getBusStop(API_KEY, 1, "json", 25, busRouteData[0]).enqueue(new Callback<BusRouteExample>() {
+        busRouteInterface.getBusStop(API_KEY, 2, "json", 25, busRouteData[0]).enqueue(new Callback<BusRouteExample>() {
             @Override
             public void onResponse(Call<BusRouteExample> call, Response<BusRouteExample> response) {
                 if(response.isSuccessful()) {
@@ -59,14 +60,14 @@ public class BusActivity extends AppCompatActivity {
                             public void onResponse(Call<BusRouteExample> call, Response<BusRouteExample> response) {
                                 BusRouteExample example = response.body();
                                 BusRouteItems items = example.getResult().getBody().getItems();
-                                BusRouteRecyclerViewAdapter adapter = new BusRouteRecyclerViewAdapter(items.getBusRouteItem(), true);
+                                BusRouteRecyclerViewAdapter adapter = new BusRouteRecyclerViewAdapter(items.getBusRouteItem());
                                 busRouteRecyclerView.setAdapter(adapter);
                                 busRouteRecyclerView.addItemDecoration(new DividerItemDecoration(busRouteRecyclerView.getContext(), 1));
                             }
 
                             @Override
                             public void onFailure(Call<BusRouteExample> call, Throwable t) {
-
+                                Log.e("fail", t.getMessage());
                             }
                         });
                     }

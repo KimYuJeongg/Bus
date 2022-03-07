@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bus.R;
 import com.example.bus.data.busroute.BusRouteItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class BusRouteRecyclerViewAdapter extends RecyclerView.Adapter<BusRouteRecyclerViewAdapter.ViewHolder>{
+public class BusRouteRecyclerViewAdapter extends RecyclerView.Adapter<BusRouteRecyclerViewAdapter.ViewHolder> {
 
-    List<BusRouteItem> upItems;
-    List<BusRouteItem> downItems;
+    List<BusRouteItem> upItems = new ArrayList<>();
+    List<BusRouteItem> downItems = new ArrayList<>();
+    List<BusRouteItem> items;
     boolean isUpDown;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -33,18 +35,19 @@ public class BusRouteRecyclerViewAdapter extends RecyclerView.Adapter<BusRouteRe
 
         public void setItem(BusRouteItem item) {
             busStopName.setText(item.getNodenm());
-            if(item.getNodeno() != null) {
+            if (item.getNodeno() != null) {
                 busStopId.setText(item.getNodeno().toString());
             }
         }
     }
 
-    public BusRouteRecyclerViewAdapter() {}
+    public BusRouteRecyclerViewAdapter() {
+    }
 
-    public BusRouteRecyclerViewAdapter(List<BusRouteItem> items, boolean isUpDown) {
-        this.isUpDown = isUpDown;
-        for(int i=0; i<items.size(); i++) {
-            if(items.get(i).getUpdowncd() == 0) {
+    public BusRouteRecyclerViewAdapter(List<BusRouteItem> items) {
+        this.items = items;
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getUpdowncd() == 0) {
                 upItems.add(items.get(i));
             } else {
                 downItems.add(items.get(i));
@@ -65,7 +68,7 @@ public class BusRouteRecyclerViewAdapter extends RecyclerView.Adapter<BusRouteRe
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if(isUpDown) {
+        if (isUpDown) {
             holder.setItem(upItems.get(position));
         } else {
             holder.setItem(downItems.get(position));
@@ -75,7 +78,7 @@ public class BusRouteRecyclerViewAdapter extends RecyclerView.Adapter<BusRouteRe
 
     @Override
     public int getItemCount() {
-        if(isUpDown) {
+        if (isUpDown) {
             return upItems.size();
         } else {
             return downItems.size();
@@ -84,6 +87,11 @@ public class BusRouteRecyclerViewAdapter extends RecyclerView.Adapter<BusRouteRe
 
     public void changeUpDown(boolean isUpDown) {
         this.isUpDown = isUpDown;
+        if (isUpDown) {
+            items = upItems;
+        } else {
+            items = downItems;
+        }
         notifyDataSetChanged();
     }
 

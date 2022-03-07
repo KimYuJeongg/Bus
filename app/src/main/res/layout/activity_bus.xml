@@ -16,10 +16,9 @@
             android:id="@+id/busName_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/busArea_activity"
@@ -49,9 +48,10 @@
                 android:id="@+id/busStartStop"
                 android:layout_width="140dp"
                 android:layout_height="match_parent"
-                android:paddingHorizontal="20dp"
+                android:paddingHorizontal="5dp"
                 android:paddingVertical="10dp"
-                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="#01C8C1"
                 android:onClick="upBus"/>
 
             <LinearLayout
@@ -64,10 +64,9 @@
                 android:id="@+id/busEndStop"
                 android:layout_width="140dp"
                 android:layout_height="match_parent"
-                android:paddingHorizontal="20dp"
+                android:paddingHorizontal="5dp"
                 android:paddingVertical="10dp"
-                android:textAlignment="center"
-                android:text="목원대 방향"
+                android:gravity="center"
                 android:onClick="downBus"/>
 
         </LinearLayout>
@@ -75,7 +74,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/busRouteRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            app:layoutManager="LinearLayoutManager"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
