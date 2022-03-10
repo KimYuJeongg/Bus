@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder> {
 
-    private ArrayList<String> mData = null;
+    private ArrayList<String[]> mData = null;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView textBusNumber, textStation, textPredictTime, textSettingTime;
@@ -27,9 +27,16 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
             textPredictTime = itemView.findViewById(R.id.textPredictTime);
             textSettingTime = itemView.findViewById(R.id.textSettingTime);
         }
+
+        public void setItem(String[] item) {
+            textBusNumber.setText(item[0]);
+            textStation.setText(item[1]);
+            textPredictTime.setText(item[2]);
+            textSettingTime.setText(item[3]);
+        }
     }
 
-    public MainRecyclerViewAdapter(ArrayList<String> list) {
+    public MainRecyclerViewAdapter(ArrayList<String[]> list) {
         mData = list;
     }
 
@@ -46,11 +53,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
 
     @Override
     public void onBindViewHolder(MainRecyclerViewAdapter.ViewHolder holder, int position) {
-        String text = mData.get(position);
-        holder.textBusNumber.setText("603");
-        holder.textStation.setText("서대전역 입구");
-        holder.textPredictTime.setText("14분");
-        holder.textSettingTime.setText("6분");
+        holder.setItem(mData.get(position));
     }
 
     @Override

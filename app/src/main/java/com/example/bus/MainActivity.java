@@ -27,10 +27,25 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(null);
         toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
 
-        ArrayList<String> list = new ArrayList<>();
-        for(int i=0; i<30; i++) {
-            list.add(i + "") ;
-        }
+        ArrayList<String[]> list = new ArrayList<>();
+        String[] arr1 = {"603","서대전역 입구", "14분", "6분"};
+        String[] arr2 = {"318","유천네거리", "21분", "3분"};
+        String[] arr3 = {"911","충남대학교", "17분", "5분"};
+        String[] arr4 = {"121","탑립동", "12분", "10분"};
+        String[] arr5 = {"63","삼성 초등학교", "6분", "5분"};
+        String[] arr6 = {"108","월평역", "9분", "4분"};
+        String[] arr7 = {"604","대덕대학교", "23분", "6분"};
+        String[] arr8 = {"407","외평동", "17분", "3분"};
+        String[] arr9 = {"703","꿈나무아파트", "8분", "3분"};
+        list.add(arr1);
+        list.add(arr2);
+        list.add(arr3);
+        list.add(arr4);
+        list.add(arr5);
+        list.add(arr6);
+        list.add(arr7);
+        list.add(arr8);
+        list.add(arr9);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView) ;
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
