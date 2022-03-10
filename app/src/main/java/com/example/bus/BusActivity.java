@@ -62,7 +62,6 @@ public class BusActivity extends AppCompatActivity {
                                 BusRouteItems items = example.getResult().getBody().getItems();
                                 BusRouteRecyclerViewAdapter adapter = new BusRouteRecyclerViewAdapter(items.getBusRouteItem());
                                 busRouteRecyclerView.setAdapter(adapter);
-                                busRouteRecyclerView.addItemDecoration(new DividerItemDecoration(busRouteRecyclerView.getContext(), 1));
                             }
 
                             @Override
