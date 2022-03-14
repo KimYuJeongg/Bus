@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,12 +26,14 @@ public class BusRouteRecyclerViewAdapter extends RecyclerView.Adapter<BusRouteRe
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView busStopName, busStopId;
+        ImageView arrow;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             busStopName = itemView.findViewById(R.id.busStopNameRoute);
             busStopId = itemView.findViewById(R.id.busStopIdRoute);
+            arrow = itemView.findViewById(R.id.arrow);
         }
 
         public void setItem(BusRouteItem item) {
@@ -68,6 +71,9 @@ public class BusRouteRecyclerViewAdapter extends RecyclerView.Adapter<BusRouteRe
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        if(position == 0) {
+            holder.arrow.setImageResource(R.drawable.route_direction_first);
+        }
         if (isUpDown) {
             holder.setItem(upItems.get(position));
         } else {
