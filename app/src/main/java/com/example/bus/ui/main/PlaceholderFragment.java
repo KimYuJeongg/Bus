@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bus.adapter.SearchRecyclerViewAdapter;
-import com.example.bus.data.bus.BusItem;
+import com.example.bus.data.busnumber.BusNumberItem;
 import com.example.bus.data.busstop.BusStopItem;
 import com.example.bus.databinding.FragmentSearchBinding;
 
@@ -86,7 +86,7 @@ public class PlaceholderFragment extends Fragment {
         adapter.resetBusStopItems(newItems);
     }
 
-    public void resetBusItems(List<BusItem> newItems) {
+    public void resetBusItems(List<BusNumberItem> newItems) {
         adapter.resetBusItems(newItems);
     }
 }

@@ -13,9 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bus.BusActivity;
 import com.example.bus.BusStopActivity;
 import com.example.bus.R;
-import com.example.bus.data.bus.BusItem;
+import com.example.bus.data.busnumber.BusNumberItem;
 import com.example.bus.data.busstop.BusStopItem;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecyclerViewAdapter.ViewHolder> {
@@ -25,7 +26,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
     public int mItemViewType;
 
     List<BusStopItem> busStopItems;
-    List<BusItem> busItems;
+    List<BusNumberItem> busItems;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -46,26 +47,22 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
                 public void onClick(View v) {
                     if (mItemViewType == 0) {
                         Intent intent = new Intent(v.getContext(), BusStopActivity.class);
-                        String[] busStopData = {
-                                busStopItems.get(getLayoutPosition()).getNodenm(),
-                                busStopItems.get(getLayoutPosition()).getNodeno().toString(),
-                                busStopItems.get(getLayoutPosition()).getGpslati() + " / " + busStopItems.get(getLayoutPosition()).getGpslong(),
-                                busStopItems.get(getLayoutPosition()).getNodeid()
-                        };
+
+                        final BusStopItem item = busStopItems.get(getBindingAdapterPosition());
+                        final HashMap<String, String> busStopData = new HashMap(){{
+                            put("nodeNm", item.getNodenm());
+                            put("nodeNo", item.getNodeno().toString());
+                            put("gpsLati", item.getGpslati().toString());
+                            put("gpsLong", item.getGpslong().toString());
+                            put("nodeId", item.getNodeid());
+                        }};
+
                         intent.putExtra("busStopData", busStopData);
                         v.getContext().startActivity(intent);
                     } else if (mItemViewType == 1) {
+                        final BusNumberItem item = busItems.get(getBindingAdapterPosition());
                         Intent intent = new Intent(v.getContext(), BusActivity.class);
-                        String[] busRouteData = {
-                                busItems.get(getLayoutPosition()).getRouteid(),
-                                busItems.get(getLayoutPosition()).getRouteno().toString(),
-                                busItems.get(getLayoutPosition()).getRoutetp(),
-                                busItems.get(getLayoutPosition()).getStartnodenm(),
-                                busItems.get(getLayoutPosition()).getEndnodenm(),
-                                busItems.get(getLayoutPosition()).getStartvehicletime(),
-                                busItems.get(getLayoutPosition()).getEndvehicletime().toString()
-                        };
-                        intent.putExtra("busRouteData", busRouteData);
+                        intent.putExtra("busRouteId", item.getRouteid());
                         v.getContext().startActivity(intent);
                     }
                 }
@@ -74,15 +71,13 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
         public void setBusStopItem(BusStopItem item) {
             busStopName.setText(item.getNodenm());
-            if (item.getNodeno() != null) {
-                busStopId.setText(item.getNodeno().toString());
-            }
+            busStopId.setText(item.getNodeno().toString());
         }
 
-        public void setBusItem(BusItem item) {
+        public void setBusItem(BusNumberItem item) {
             busName.setText(item.getRouteno());
             busArea.setText("대전");
-            busRoute.setText(item.getEndnodenm() + " ⇆ " + item.getStartnodenm());
+            busRoute.setText(String.format("%s ⇆ %s", item.getEndnodenm(), item.getStartnodenm()));
         }
 
     }
@@ -104,9 +99,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
             view = inflater.inflate(R.layout.search_bus_item, parent, false);
         }
 
-        SearchRecyclerViewAdapter.ViewHolder vh = new SearchRecyclerViewAdapter.ViewHolder(view);
-
-        return vh;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -145,7 +138,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         notifyDataSetChanged();
     }
 
-    public void resetBusItems(List<BusItem> newItems) {
+    public void resetBusItems(List<BusNumberItem> newItems) {
         this.busItems = newItems;
         notifyDataSetChanged();
     }
