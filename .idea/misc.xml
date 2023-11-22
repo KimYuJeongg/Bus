@@ -37,6 +37,42 @@
         <entry key="..\:/Bus/app/src/main/res/layout/search_bus_item.xml" value="0.31157407407407406" />
         <entry key="..\:/Bus/app/src/main/res/layout/search_bus_stop_item.xml" value="0.31157407407407406" />
         <entry key="..\:/Bus/app/src/main/res/menu/appbar_action.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/bottom_border_style.xml" value="0.363" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/bus_type_radius.xml" value="0.2475" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/bus_type_style.xml" value="0.362" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/center_border_style.xml" value="0.363" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/circle_button_style.xml" value="0.363" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/gray_radius_style.xml" value="0.362" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/grey.xml" value="0.362" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/horizontal_gradient_style.xml" value="0.1645" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/ic_back.xml" value="0.363" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/ic_bell.xml" value="0.2475" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/ic_bus.xml" value="0.362" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/ic_bus_stop.xml" value="0.362" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/ic_cancel.xml" value="0.363" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/ic_empty_star.xml" value="0.2475" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/ic_home.xml" value="0.269" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/ic_round_refresh_24.xml" value="0.363" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/ic_search.xml" value="0.2475" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/ic_star.xml" value="0.2475" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/vertical_gradient_style.xml" value="0.363" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/drawable/white_radius_style.xml" value="0.363" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout-land/bus_route_item.xml" value="0.3064373897707231" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/activity_bus.xml" value="0.33" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/activity_bus_stop.xml" value="0.33" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/activity_main.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/activity_search.xml" value="0.25" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/arrival_bus_item.xml" value="0.33" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/bus_route_item.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/fragment_home.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/fragment_search.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/main_bus_item.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/main_bus_loading_item.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/main_bus_stop_item.xml" value="0.3609375" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/search_bus_item.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/layout/search_bus_stop_item.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/menu/appbar_action.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/4N-2/StudioProjects/Bus/app/src/main/res/menu/bottom_navigation.xml" value="0.3609375" />
       </map>
     </option>
   </component>
