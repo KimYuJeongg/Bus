@@ -2,7 +2,9 @@ package com.example.bus.data;
 
 import android.util.Log;
 
-import com.example.bus.data.bus.BusInterface;
+import com.example.bus.data.busdetail.BusDetailInterface;
+import com.example.bus.data.busdetail.BusDetailResult;
+import com.example.bus.data.busnumber.BusNumberInterface;
 import com.example.bus.data.busarrival.BusArrivalInterface;
 import com.example.bus.data.busroute.BusRouteInterface;
 import com.example.bus.data.busstop.BusStopInterface;
@@ -17,11 +19,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     private static RetrofitClient instance = null;
-    private BusStopInterface busStopInterface;
-    private BusInterface busInterface;
-    private BusArrivalInterface busArrivalInterface;
-    private BusRouteInterface busRouteInterface;
-    private String baseUrl = "http://apis.data.go.kr/1613000/";
+    private final BusStopInterface busStopInterface;
+    private final BusNumberInterface busNumberInterface;
+    private final BusArrivalInterface busArrivalInterface;
+    private final BusRouteInterface busRouteInterface;
+    private final BusDetailInterface busDetailInterface;
 
     private RetrofitClient() {
         Gson gson = new GsonBuilder()
@@ -30,6 +32,7 @@ public class RetrofitClient {
 
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor()).build();
 
+        final String baseUrl = "http://apis.data.go.kr/1613000/";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(client)
@@ -37,9 +40,10 @@ public class RetrofitClient {
                 .build();
 
         busStopInterface = retrofit.create(BusStopInterface.class);
-        busInterface = retrofit.create(BusInterface.class);
+        busNumberInterface = retrofit.create(BusNumberInterface.class);
         busArrivalInterface = retrofit.create(BusArrivalInterface.class);
         busRouteInterface = retrofit.create(BusRouteInterface.class);
+        busDetailInterface = retrofit.create(BusDetailInterface.class);
     }
 
     private HttpLoggingInterceptor httpLoggingInterceptor() {
@@ -64,8 +68,8 @@ public class RetrofitClient {
         return busStopInterface;
     }
 
-    public BusInterface getBusRetrofitInterface() {
-        return busInterface;
+    public BusNumberInterface getBusRetrofitInterface() {
+        return busNumberInterface;
     }
 
     public BusArrivalInterface getBusArrivalRetrofitInterface() {
@@ -76,4 +80,7 @@ public class RetrofitClient {
         return busRouteInterface;
     }
 
+    public BusDetailInterface getBusDetailInterface() {
+        return  busDetailInterface;
+    }
 }

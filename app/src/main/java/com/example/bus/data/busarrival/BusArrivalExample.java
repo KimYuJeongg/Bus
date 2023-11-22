@@ -1,6 +1,5 @@
 package com.example.bus.data.busarrival;
 
-import com.example.bus.data.bus.BusResult;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

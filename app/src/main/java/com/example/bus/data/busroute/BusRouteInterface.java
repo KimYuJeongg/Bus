@@ -7,7 +7,7 @@ import retrofit2.http.Query;
 public interface BusRouteInterface {
 
     @GET("http://apis.data.go.kr/1613000/BusRouteInfoInqireService/getRouteAcctoThrghSttnList")
-    Call<BusRouteExample> getBusStop(
+    Call<BusRouteExample> getBusStopsByRoute(
             @Query("serviceKey") String serviceKey,
             @Query("numOfRows") int numOfRows,
             @Query("_type") String type,
