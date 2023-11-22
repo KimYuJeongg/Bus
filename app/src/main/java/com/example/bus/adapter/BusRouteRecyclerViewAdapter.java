@@ -1,6 +1,7 @@
 package com.example.bus.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bus.BusStopActivity;
 import com.example.bus.R;
 import com.example.bus.data.busroute.BusRouteItem;
+import com.example.bus.data.busstop.BusStopItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class BusRouteRecyclerViewAdapter extends RecyclerView.Adapter<BusRouteRecyclerViewAdapter.ViewHolder> {
@@ -21,6 +25,7 @@ public class BusRouteRecyclerViewAdapter extends RecyclerView.Adapter<BusRouteRe
     List<BusRouteItem> upItems = new ArrayList<>();
     List<BusRouteItem> downItems = new ArrayList<>();
     List<BusRouteItem> items;
+    List<BusStopItem> busStopItems;
     boolean isUpDown;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -34,6 +39,25 @@ public class BusRouteRecyclerViewAdapter extends RecyclerView.Adapter<BusRouteRe
             busStopName = itemView.findViewById(R.id.busStopNameRoute);
             busStopId = itemView.findViewById(R.id.busStopIdRoute);
             arrow = itemView.findViewById(R.id.arrow);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), BusStopActivity.class);
+
+                    final BusRouteItem item = items.get(getBindingAdapterPosition());
+                    final HashMap<String, String> busStopData = new HashMap(){{
+                        put("nodeNm", item.getNodenm());
+                        put("nodeNo", item.getNodeno().toString());
+                        put("gpsLati", item.getGpslati().toString());
+                        put("gpsLong", item.getGpslong().toString());
+                        put("nodeId", item.getNodeid());
+                    }};
+
+                    intent.putExtra("busStopData", busStopData);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
 
         public void setItem(BusRouteItem item) {
