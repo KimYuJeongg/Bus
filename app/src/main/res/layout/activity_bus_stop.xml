@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".BusStopActivity">
 
     <LinearLayout
@@ -14,56 +15,59 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/horizontal_gradient_style"
-            android:orientation="vertical">
+            android:background="@drawable/bottom_border_style"
+            android:orientation="vertical"
+            android:paddingHorizontal="15dp"
+            android:paddingTop="15dp">
 
-            <TextView
-                android:id="@+id/busStopId"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+                android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/busStopName"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="10dp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/busStopLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="8dp"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+                <ImageButton
+                    android:id="@+id/imgbtn_bus_stop_bookmark_busstop"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_empty_star"/>
+            </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingVertical="10dp">
+                android:layout_marginVertical="12dp"
+                android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/locationButton"
+                <TextView
+                    android:id="@+id/busStopId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="14dp"
-                    android:background="@drawable/circle_button_style"
-                    app:srcCompat="@drawable/ic_location" />
+                    android:textAlignment="center" />
 
-                <ImageButton
-                    android:id="@+id/busStopBookMarkButton"
-                    android:layout_width="wrap_content"
+                <View
+                    android:layout_height="match_parent"
+                    android:layout_width="1dp"
+                    android:layout_marginVertical="3.5dp"
+                    android:layout_marginHorizontal="6dp"
+                    android:background="@color/light_gray"/>
+
+                <TextView
+                    android:id="@+id/busStopLocation"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/circle_button_style"
-                    app:srcCompat="@drawable/ic_star" />
+                    android:textAlignment="center"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -71,6 +75,19 @@
             android:id="@+id/busArrivalRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_refresh"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="refresh"
+        app:maxImageSize="28dp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

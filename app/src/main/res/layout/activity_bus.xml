@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".BusActivity">
 
     <LinearLayout
@@ -15,70 +16,100 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/horizontal_gradient_style"
+            android:paddingTop="15dp"
+            android:paddingHorizontal="15dp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/busArea_activity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="대전"
-                android:textColor="@color/white"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/busName_activity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
-
-            <TextView
-                android:id="@+id/busType_activity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/white"
-                android:textAlignment="center" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/white_radius_style"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/busStartStop"
-                    android:layout_width="140dp"
-                    android:layout_height="match_parent"
-                    android:paddingHorizontal="5dp"
-                    android:paddingVertical="10dp"
-                    android:gravity="center"
-                    android:textColor="#01C8C1"
-                    android:onClick="upBus"/>
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/light_gray"
-                    android:orientation="vertical" />
+                    android:id="@+id/busName_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="24sp"/>
 
                 <TextView
-                    android:id="@+id/busEndStop"
-                    android:layout_width="140dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:onClick="downBus"
+                    android:id="@+id/busType_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/bus_type_radius_style"
                     android:paddingHorizontal="5dp"
-                    android:paddingVertical="10dp" />
-
+                    android:paddingVertical="2dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/busCity_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_height="match_parent"
+                    android:layout_width="1dp"
+                    android:layout_marginVertical="3.5dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@color/light_gray"/>
+
+                <TextView
+                    android:id="@+id/busSection_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/operationTime_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:layout_height="match_parent"
+                    android:layout_width="1dp"
+                    android:layout_marginVertical="3.5dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@color/light_gray"/>
+
+                <TextView
+                    android:id="@+id/dispatchInterval_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="배차간격" />
+            </LinearLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/startEndTabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/startStop_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/endStop_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.tabs.TabLayout>
 
         </LinearLayout>
 
