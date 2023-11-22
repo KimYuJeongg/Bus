@@ -1,9 +1,9 @@
-package com.example.bus.data.bus;
+package com.example.bus.data.busnumber;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BusItem {
+public class BusNumberItem {
 
     @SerializedName("endnodenm")
     @Expose

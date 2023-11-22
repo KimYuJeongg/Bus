@@ -1,17 +1,17 @@
-package com.example.bus.data.bus;
+package com.example.bus.data.busnumber;
 
 import com.example.bus.data.Header;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BusResult {
+public class BusNumberResult {
 
     @SerializedName("header")
     @Expose
     private Header header;
     @SerializedName("body")
     @Expose
-    private BusBody body;
+    private BusNumberBody body;
 
     public Header getHeader() {
         return header;
@@ -21,11 +21,11 @@ public class BusResult {
         this.header = header;
     }
 
-    public BusBody getBody() {
+    public BusNumberBody getBody() {
         return body;
     }
 
-    public void setBody(BusBody body) {
+    public void setBody(BusNumberBody body) {
         this.body = body;
     }
 

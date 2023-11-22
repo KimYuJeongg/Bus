@@ -1,13 +1,13 @@
-package com.example.bus.data.bus;
+package com.example.bus.data.busnumber;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BusBody {
+public class BusNumberBody {
 
     @SerializedName("items")
     @Expose
-    private BusItems items;
+    private BusNumberItems items;
 
     @SerializedName("numOfRows")
     @Expose
@@ -19,11 +19,11 @@ public class BusBody {
     @Expose
     private Integer totalCount;
 
-    public BusItems getItems() {
+    public BusNumberItems getItems() {
         return items;
     }
 
-    public void setItems(BusItems items) {
+    public void setItems(BusNumberItems items) {
         this.items = items;
     }
 

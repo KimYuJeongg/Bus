@@ -1,21 +1,21 @@
-package com.example.bus.data.bus;
+package com.example.bus.data.busnumber;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class BusItems {
+public class BusNumberItems {
 
     @SerializedName("item")
     @Expose
-    private List<BusItem> busItem = null;
+    private List<BusNumberItem> busItem = null;
 
-    public List<BusItem> getBusItem() {
+    public List<BusNumberItem> getBusItem() {
         return busItem;
     }
 
-    public void setBusItem(List<BusItem> busItem) {
+    public void setBusItem(List<BusNumberItem> busItem) {
         this.busItem = this.busItem;
     }
 
